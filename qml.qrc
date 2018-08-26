@@ -21,5 +21,7 @@
         <file>qml/actions/qmldir</file>
         <file>qml/actions/AppActions.qml</file>
         <file>qml/stores/ProjectsPanelStore.qml</file>
+        <file>qml/views/panel/SliderDropDownHeader.qml</file>
+        <file>qml/views/panel/SliderDropDownDelegateModel.qml</file>
     </qresource>
 </RCC>

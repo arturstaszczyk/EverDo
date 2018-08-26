@@ -20,7 +20,7 @@ Item {
                 SliderDropDown {
                     headerText: model.name
 
-                    headerHeight: 36
+                    headerHeight: 22
                     width: parent.width
                 }
             }
