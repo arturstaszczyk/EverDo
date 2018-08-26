@@ -1,20 +1,28 @@
-import QtQuick 2.8
+import QtQuick 2.9
 import QtQuick.Layouts 1.3
-
+import "../../stores"
 
 Item {
-    width: 100
+    width: 150
 
     Rectangle {
         anchors.fill: parent
 
         color: "blue"
 
-        ColumnLayout {
+        Column {
             anchors.fill: parent
-            SliderDropDown {
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignTop
+
+            Repeater {
+
+                model: MainStore.projectsPanelStore.projectTypes
+
+                SliderDropDown {
+                    headerText: model.name
+
+                    headerHeight: 36
+                    width: parent.width
+                }
             }
         }
 

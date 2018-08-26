@@ -17,4 +17,10 @@ Store {
         id: userPrefs
     }
 
+    property alias projectsPanelStore: projectsPanelStore
+
+    ProjectsPanelStore {
+        id: projectsPanelStore
+    }
+
 }

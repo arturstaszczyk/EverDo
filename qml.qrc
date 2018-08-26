@@ -20,5 +20,6 @@
         <file>qml/actions/ActionTypes.qml</file>
         <file>qml/actions/qmldir</file>
         <file>qml/actions/AppActions.qml</file>
+        <file>qml/stores/ProjectsPanelStore.qml</file>
     </qresource>
 </RCC>
