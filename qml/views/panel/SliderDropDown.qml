@@ -6,7 +6,9 @@ Item {
 
     id: sliderDropDown
     width: parent.width
-    height: headerHeight + 60
+    height: headerHeight + content.contentHeight
+
+    property int sizeOfTheContent: 0
 
     property alias headerText: header.text
     property int headerHeight: 35
@@ -24,6 +26,8 @@ Item {
         }
 
         ListView {
+            id: content
+
             Layout.fillWidth: true
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignTop
