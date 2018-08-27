@@ -13,6 +13,8 @@ Item {
 
     property bool selected: false
 
+    id: sliderDropDownDef
+
     width: parent.width
     height: header.height + content.height
 
@@ -47,7 +49,7 @@ Item {
             model: SliderDropDownDelegateModel {
                 id: contentModel
                 itemHeight: headerHeight
-                parentGuid: headerGuid
+                headerGuid: sliderDropDownDef.headerGuid
             }
         }
     }

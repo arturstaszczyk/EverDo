@@ -5,9 +5,9 @@ Rectangle {
 
     property alias text: itemText.text
 
-    property int typeGuid
+    property int guid
 
-    property int parentG
+    property int headerGuid
 
     id: item
 
@@ -22,7 +22,6 @@ Rectangle {
     }
 
     Component.onCompleted: {
-        item.DelegateModel.inRightType = Qt.binding(function() { return model.type === parentG })
-        console.log(model.type + " " + parentG)
+        item.DelegateModel.inRightType = guid === headerGuid
     }
 }

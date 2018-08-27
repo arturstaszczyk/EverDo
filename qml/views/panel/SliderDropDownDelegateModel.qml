@@ -4,9 +4,11 @@ import "../../stores"
 
 DelegateModel {
 
+    id: delegateModelDef
+
     property int itemHeight
 
-    property int parentGuid
+    property int headerGuid
 
     property int selectedProjectType: MainStore.projectsPanelStore.selectedProject
 
@@ -27,7 +29,7 @@ DelegateModel {
         height: itemHeight
 
         text: model.name
-        typeGuid: model.type
-        parentG: parentGuid
+        guid: model.type
+        headerGuid: delegateModelDef.headerGuid
     }
 }
