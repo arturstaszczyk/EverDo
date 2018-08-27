@@ -8,6 +8,8 @@ Item {
 
     Rectangle {
         color: selected ? "#c5e1a5" : "#2195f2"
+        border.width: selected ? 1 : 0
+        border.color: "#94af76"
         anchors.fill: parent
 
         Text {
