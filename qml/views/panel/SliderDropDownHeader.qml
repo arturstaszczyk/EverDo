@@ -1,5 +1,4 @@
 import QtQuick 2.9
-import "../../actions/panel"
 
 Item {
 
@@ -15,13 +14,6 @@ Item {
             anchors.fill: parent
             verticalAlignment: Qt.AlignVCenter
             horizontalAlignment: Qt.AlignHCenter
-
-            text: headerText
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: ProjectsPanelActions.unfoldProjectType(headerText)
         }
     }
 }

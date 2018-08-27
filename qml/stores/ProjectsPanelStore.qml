@@ -5,7 +5,10 @@ import "../actions/panel"
 Store {
 
     property alias projects: projects
+
     property alias projectTypes: projectTypes
+
+    property string selectedProject
 
     ListModel {
         id: projects
@@ -51,7 +54,7 @@ Store {
     Filter {
         type: ProjectsPanelActionTypes.unfoldProjectType
         onDispatched: {
-            console.log(message.guid.toString())
+            selectedProject = message.guid
         }
     }
 }

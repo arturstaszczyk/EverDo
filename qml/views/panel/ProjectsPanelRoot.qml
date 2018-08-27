@@ -18,6 +18,7 @@ Item {
                 model: MainStore.projectsPanelStore.projectTypes
 
                 SliderDropDown {
+                    guid: model.guid
                     headerText: model.name
 
                     headerHeight: 22
