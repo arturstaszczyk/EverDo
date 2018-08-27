@@ -8,8 +8,6 @@ Item {
     width: parent.width
     height: headerHeight + content.contentHeight
 
-    property int sizeOfTheContent: 0
-
     property alias headerText: header.text
     property int headerHeight: 35
 

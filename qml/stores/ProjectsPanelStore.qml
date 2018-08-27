@@ -1,5 +1,6 @@
 import QtQuick 2.9
 import QuickFlux 1.1
+import "../actions/panel"
 
 Store {
 
@@ -44,6 +45,13 @@ Store {
         ListElement {
             name: "Waiting"
             guid: 0x3
+        }
+    }
+
+    Filter {
+        type: ProjectsPanelActionTypes.unfoldProjectType
+        onDispatched: {
+            console.log(message.guid.toString())
         }
     }
 }

@@ -1,4 +1,5 @@
 import QtQuick 2.9
+import "../../actions/panel"
 
 Item {
 
@@ -20,7 +21,7 @@ Item {
 
         MouseArea {
             anchors.fill: parent
-            onClicked: console.log('Ha')
+            onClicked: ProjectsPanelActions.unfoldProjectType(headerText)
         }
     }
 }
