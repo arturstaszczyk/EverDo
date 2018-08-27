@@ -28,6 +28,8 @@ Item {
             Layout.alignment: Qt.AlignTop
             Layout.fillWidth: true
 
+            selected: sliderDropDownDef.selected
+
             MouseArea {
                 anchors.fill: parent
                 onClicked: ProjectsPanelActions.unfoldProjectType(headerGuid)

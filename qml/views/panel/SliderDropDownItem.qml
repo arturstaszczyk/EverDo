@@ -11,7 +11,7 @@ Rectangle {
 
     id: item
 
-    color: "yellow"
+    color: "#e5efe5"
 
     Text {
         id: itemText

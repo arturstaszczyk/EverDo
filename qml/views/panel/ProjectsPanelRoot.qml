@@ -14,7 +14,10 @@ Item {
     Rectangle {
         anchors.fill: parent
 
-        color: "blue"
+        color: "transparent"
+
+        border.width: 1
+        border.color: "#e5e5e5"
 
         Column {
             anchors.fill: parent
