@@ -8,7 +8,7 @@ Store {
 
     property alias projectTypes: projectTypes
 
-    property string selectedProject
+    property int selectedProject
 
     ListModel {
         id: projects
@@ -55,6 +55,7 @@ Store {
         type: ProjectsPanelActionTypes.unfoldProjectType
         onDispatched: {
             selectedProject = message.guid
+            console.log("unfoldProjectType: " + message.guid)
         }
     }
 }

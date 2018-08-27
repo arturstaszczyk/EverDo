@@ -5,7 +5,7 @@ import "./"
 
 ActionCreator {
 
-    signal unfoldProjectType(string guid);
+    signal unfoldProjectType(int guid);
 
 }
 

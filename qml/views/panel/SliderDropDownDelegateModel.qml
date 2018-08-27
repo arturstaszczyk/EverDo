@@ -6,25 +6,28 @@ DelegateModel {
 
     property int itemHeight
 
+    property int parentGuid
+
+    property int selectedProjectType: MainStore.projectsPanelStore.selectedProject
+
     model: MainStore.projectsPanelStore.projects
 
-    Rectangle {
-        id: item
+    onSelectedProjectTypeChanged: {
+        filterOnGroup = "rightType"
+    }
 
+    groups: [
+        DelegateModelGroup {
+            name: "rightType"
+        }
+    ]
+
+    delegate: SliderDropDownItem {
         width: parent.width
         height: itemHeight
 
-        color: "yellow"
-
-        Text {
-            id: itemText
-
-            anchors.fill: parent
-            verticalAlignment: Qt.AlignVCenter
-            horizontalAlignment: Qt.AlignHCenter
-
-            text: model.name
-        }
-
+        text: model.name
+        typeGuid: model.type
+        parentG: parentGuid
     }
 }

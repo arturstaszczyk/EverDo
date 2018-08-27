@@ -25,5 +25,6 @@
         <file>qml/views/panel/SliderDropDownDelegateModel.qml</file>
         <file>qml/actions/panel/ProjectsPanelActions.qml</file>
         <file>qml/actions/panel/ProjectsPanelActionTypes.qml</file>
+        <file>qml/views/panel/SliderDropDownItem.qml</file>
     </qresource>
 </RCC>

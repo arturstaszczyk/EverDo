@@ -5,6 +5,12 @@ import "../../stores"
 Item {
     width: 150
 
+    id: panel
+
+    property var projectTypes: MainStore.projectsPanelStore.projectTypes
+
+    property int selectedProjectTypeGuid: MainStore.projectsPanelStore.selectedProject
+
     Rectangle {
         anchors.fill: parent
 
@@ -15,14 +21,15 @@ Item {
 
             Repeater {
 
-                model: MainStore.projectsPanelStore.projectTypes
+                model: projectTypes
 
                 SliderDropDown {
-                    guid: model.guid
+                    headerGuid: model.guid
                     headerText: model.name
-
                     headerHeight: 22
+
                     width: parent.width
+                    selected: model.guid === selectedProjectTypeGuid
                 }
             }
         }
