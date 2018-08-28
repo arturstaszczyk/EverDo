@@ -1,15 +1,17 @@
 import QtQuick 2.9
 import QtQuick.Layouts 1.3
 import "../../stores"
-import "../"
+import "../common"
+import "../common/theme.js" as Theme
 
 
 SpaceCointainer {
 
     property var filters: MainStore.filtersStore.model
 
+    noBorder: true
+
     RowLayout {
-        spacing: 10
         anchors.fill: parent
 
         Repeater {
@@ -17,8 +19,8 @@ SpaceCointainer {
 
             Rectangle {
                 Layout.fillWidth: true
-                height: parent.height / 2
-                color: "red"
+                height: parent.height
+                color: Theme.primaryColor
 
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
 

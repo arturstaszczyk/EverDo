@@ -54,7 +54,12 @@ Store {
     Filter {
         type: ProjectsPanelActionTypes.unfoldProjectType
         onDispatched: {
-            selectedProject = message.guid
+            if(selectedProject === message.guid) {
+                selectedProject = ""
+            } else {
+                selectedProject = message.guid
+            }
+
             console.log("unfoldProjectType: " + message.guid)
         }
     }

@@ -11,7 +11,7 @@ Rectangle {
 
     id: item
 
-    color: "#e5efe5"
+    color: "transparent"
 
     Text {
         id: itemText

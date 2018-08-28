@@ -27,6 +27,7 @@
         <file>qml/views/panel/SliderDropDownItem.qml</file>
         <file>qml/views/filters/FiltersRoot.qml</file>
         <file>qml/stores/FiltersStore.qml</file>
-        <file>qml/views/SpaceCointainer.qml</file>
+        <file>qml/views/common/theme.js</file>
+        <file>qml/views/common/SpaceCointainer.qml</file>
     </qresource>
 </RCC>

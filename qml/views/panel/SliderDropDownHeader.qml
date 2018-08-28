@@ -1,4 +1,5 @@
 import QtQuick 2.9
+import "../common/theme.js" as Theme
 
 Item {
 
@@ -7,15 +8,15 @@ Item {
     property bool selected
 
     Rectangle {
-        color: selected ? "#c5e1a5" : "#2195f2"
+        color: selected ? Theme.primaryLightColor : Theme.primaryColor
         border.width: selected ? 1 : 0
-        border.color: "#94af76"
+        border.color: Theme.primaryColor
         anchors.fill: parent
 
         Text {
             id: headerLabel
 
-            color: "black"
+            color: Theme.primaryTextColor
             opacity: 0.75
 
             anchors.fill: parent

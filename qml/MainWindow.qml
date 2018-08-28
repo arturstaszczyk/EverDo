@@ -8,6 +8,7 @@ import "./views/workspace"
 import "./views/filters"
 import "./middlewares"
 import "./actions"
+import "./views/common/theme.js" as Theme
 
 Window {
     width: 480
@@ -16,13 +17,12 @@ Window {
 
     ColumnLayout {
         anchors.fill: parent
-        anchors.leftMargin: 16
-        anchors.rightMargin: 16
+        anchors.margins: Theme.basicElementSpacing
 
         FiltersRoot {
             Layout.fillWidth: true
             Layout.fillHeight: false
-            height: 48
+            height: Theme.basicElementHeight
         }
 
         RowLayout {
