@@ -23,4 +23,10 @@ Store {
         id: projectsPanelStore
     }
 
+    property alias filtersStore: filtersStore
+
+    FiltersStore {
+        id: filtersStore
+    }
+
 }

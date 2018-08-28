@@ -3,7 +3,6 @@
         <file>qml/MainWindow.qml</file>
         <file>qml/main.qml</file>
         <file>qml/views/Footer.qml</file>
-        <file>qml/views/Header.qml</file>
         <file>qml/views/TodoVisualModel.qml</file>
         <file>qml/views/TodoList.qml</file>
         <file>qml/views/TodoItem.qml</file>
@@ -26,5 +25,8 @@
         <file>qml/actions/panel/ProjectsPanelActions.qml</file>
         <file>qml/actions/panel/ProjectsPanelActionTypes.qml</file>
         <file>qml/views/panel/SliderDropDownItem.qml</file>
+        <file>qml/views/filters/FiltersRoot.qml</file>
+        <file>qml/stores/FiltersStore.qml</file>
+        <file>qml/views/SpaceCointainer.qml</file>
     </qresource>
 </RCC>

@@ -5,6 +5,7 @@ import QuickFlux 1.1
 import "./views"
 import "./views/panel"
 import "./views/workspace"
+import "./views/filters"
 import "./middlewares"
 import "./actions"
 
@@ -18,9 +19,10 @@ Window {
         anchors.leftMargin: 16
         anchors.rightMargin: 16
 
-        Header {
+        FiltersRoot {
             Layout.fillWidth: true
             Layout.fillHeight: false
+            height: 48
         }
 
         RowLayout {
