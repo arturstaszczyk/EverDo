@@ -4,7 +4,7 @@ import QuickFlux 1.0
 
 KeyTable {
 
-    property string unfoldProjectType
+    property string selectProjectType
 
 }
 

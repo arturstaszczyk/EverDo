@@ -32,7 +32,7 @@ Item {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: ProjectsPanelActions.unfoldProjectType(headerGuid)
+                onClicked: ProjectsPanelActions.selectProjectType(headerGuid)
             }
         }
 

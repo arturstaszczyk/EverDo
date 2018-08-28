@@ -52,7 +52,7 @@ Store {
     }
 
     Filter {
-        type: ProjectsPanelActionTypes.unfoldProjectType
+        type: ProjectsPanelActionTypes.selectProjectType
         onDispatched: {
             if(selectedProject === message.guid) {
                 selectedProject = ""
@@ -60,7 +60,7 @@ Store {
                 selectedProject = message.guid
             }
 
-            console.log("unfoldProjectType: " + message.guid)
+            console.log("selectProjectType: " + message.guid)
         }
     }
 }
