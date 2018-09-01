@@ -20,7 +20,7 @@ SpaceCointainer {
             Rectangle {
                 Layout.fillWidth: true
                 height: parent.height
-                color: Theme.primaryColor
+                color: Theme.primaryLightColor
 
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
 

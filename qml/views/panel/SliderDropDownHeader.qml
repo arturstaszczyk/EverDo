@@ -8,7 +8,7 @@ Item {
     property bool selected
 
     Rectangle {
-        color: selected ? Theme.primaryLightColor : Theme.primaryColor
+        color: selected ? Theme.primaryColor : Theme.primaryLightColor
         border.width: selected ? 1 : 0
         border.color: Theme.primaryColor
         anchors.fill: parent
