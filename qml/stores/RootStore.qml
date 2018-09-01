@@ -27,6 +27,12 @@ Store {
         id: filtersStore
     }
 
+    property alias columnsStore: columnsStore
+
+    ColumnsStore {
+        id: columnsStore
+    }
+
     property alias notesStore: notesStore
 
     NotesStore {

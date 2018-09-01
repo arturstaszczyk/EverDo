@@ -31,5 +31,6 @@
         <file>qml/views/common/SpaceCointainer.qml</file>
         <file>qml/views/common/PrimaryText.qml</file>
         <file>qml/stores/NotesStore.qml</file>
+        <file>qml/stores/ColumnsStore.qml</file>
     </qresource>
 </RCC>
