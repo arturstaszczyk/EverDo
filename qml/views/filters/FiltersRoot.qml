@@ -24,12 +24,9 @@ SpaceCointainer {
 
                 Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
 
-                Text {
+                PrimaryText {
                     anchors.fill: parent
-
                     text: model.name
-                    verticalAlignment: Qt.AlignVCenter
-                    horizontalAlignment: Qt.AlignHCenter
                 }
             }
         }

@@ -1,5 +1,10 @@
-import QtQuick 2.0
+import QtQuick 2.9
+import "theme.js" as Theme
 
-Item {
+Text {
+    color: Theme.primaryTextColor
+    opacity: 0.75
 
+    verticalAlignment: Qt.AlignVCenter
+    horizontalAlignment: Qt.AlignHCenter
 }

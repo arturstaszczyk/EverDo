@@ -1,6 +1,8 @@
 import QtQuick 2.0
 import QtQml.Models 2.3
 
+import "../common"
+
 Rectangle {
 
     property alias text: itemText.text
@@ -13,12 +15,9 @@ Rectangle {
 
     color: "transparent"
 
-    Text {
+    PrimaryText {
         id: itemText
-
         anchors.fill: parent
-        verticalAlignment: Qt.AlignVCenter
-        horizontalAlignment: Qt.AlignHCenter
     }
 
     Component.onCompleted: {
