@@ -15,7 +15,6 @@ Item {
                 Layout.fillWidth: true
                 height: Theme.basicElementHeight
 
-                noBorder: true
 
             }
 

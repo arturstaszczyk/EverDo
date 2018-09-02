@@ -6,6 +6,9 @@ import "theme.js" as Theme
 Item {
     property alias model: buttonsRepeater.model
 
+    id: horizontalButtons
+
+    signal clicked(string button)
 
     RowLayout {
         anchors.fill: parent
@@ -22,7 +25,14 @@ Item {
 
                 PrimaryText {
                     anchors.fill: parent
-                    text: model.name
+                    text: modelData
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        horizontalButtons.clicked(modelData)
+                    }
                 }
             }
         }

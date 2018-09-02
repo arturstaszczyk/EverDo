@@ -14,12 +14,12 @@ Store {
         }
 
         ListElement {
-            guid: 0x20
+            guid: 0x21
             name: "Work"
         }
 
         ListElement {
-            guid: 0x20
+            guid: 0x22
             name: "City"
         }
     }

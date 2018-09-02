@@ -12,5 +12,7 @@ KeyTable {
     property string setShowCompletedTasks
 
     property string startApp
+
+    property string debugAction
 }
 

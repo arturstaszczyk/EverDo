@@ -14,5 +14,7 @@ ActionCreator {
     // Show/hide completed task
     signal setShowCompletedTasks(bool value)
 
+    signal debugAction()
+
 }
 
