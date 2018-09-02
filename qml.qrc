@@ -32,5 +32,7 @@
         <file>qml/views/common/PrimaryText.qml</file>
         <file>qml/stores/NotesStore.qml</file>
         <file>qml/stores/ColumnsStore.qml</file>
+        <file>qml/views/common/HorizontalButtons.qml</file>
+        <file>qml/views/common/DebugRect.qml</file>
     </qresource>
 </RCC>

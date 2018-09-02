@@ -11,10 +11,12 @@ Item {
         ColumnLayout {
             anchors.fill: parent
 
-            Rectangle {
+            SpaceCointainer {
                 Layout.fillWidth: true
                 height: Theme.basicElementHeight
-                color: Theme.secondaryLightColor
+
+                noBorder: true
+
             }
 
             RowLayout {

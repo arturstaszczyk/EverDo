@@ -11,26 +11,9 @@ SpaceCointainer {
 
     noBorder: true
 
-    RowLayout {
+    HorizontalButtons {
         anchors.fill: parent
-
-        Repeater {
-            model: filters
-
-            Rectangle {
-                Layout.fillWidth: true
-                height: parent.height
-                color: Theme.primaryLightColor
-
-                Layout.alignment: Qt.AlignLeft | Qt.AlignVCenter
-
-                PrimaryText {
-                    anchors.fill: parent
-                    text: model.name
-                }
-            }
-        }
-
+        model: filters
     }
 }
 
