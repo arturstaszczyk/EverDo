@@ -3,32 +3,40 @@ import QtQuick.Layouts 1.3
 
 import "../common"
 import "../common/theme.js" as Theme
+import "../../stores"
 
 Item {
     SpaceCointainer {
         anchors.fill: parent
+        noBorder: true
 
         ColumnLayout {
             anchors.fill: parent
-
-            SpaceCointainer {
-                Layout.fillWidth: true
-                height: Theme.basicElementHeight
-
-
-            }
 
             RowLayout {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
 
                 Repeater {
-                    model: 3
+                    model: MainStore.columnsStore.model
 
-                    Rectangle {
+                    SpaceCointainer {
                         Layout.fillHeight: true
                         Layout.fillWidth: true
                         color: Theme.secondaryLightColor
+
+                        SpaceCointainer {
+                            width: parent.width
+                            height: Theme.basicElementHeight
+
+                            color: "white"
+
+                            PrimaryText {
+                                anchors.fill: parent
+                                text: model.name
+                            }
+                        }
+
                     }
                 }
             }
