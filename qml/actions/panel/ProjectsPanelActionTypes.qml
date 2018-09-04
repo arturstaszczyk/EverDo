@@ -6,5 +6,7 @@ KeyTable {
 
     property string selectProjectType
 
+    property string selectProject
+
 }
 

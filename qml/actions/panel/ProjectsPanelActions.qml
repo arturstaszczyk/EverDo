@@ -7,5 +7,7 @@ ActionCreator {
 
     signal selectProjectType(int guid);
 
+    signal selectProject(int guid, string name);
+
 }
 

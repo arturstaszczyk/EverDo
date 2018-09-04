@@ -29,7 +29,8 @@ DelegateModel {
         height: itemHeight
 
         text: model.name
-        guid: model.type
+        guid: model.guid
+        parentGuid: model.type
         headerGuid: delegateModelDef.headerGuid
     }
 }
