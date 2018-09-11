@@ -3,17 +3,11 @@
         <file>qml/MainWindow.qml</file>
         <file>qml/main.qml</file>
         <file>qml/views/Footer.qml</file>
-        <file>qml/views/TodoVisualModel.qml</file>
-        <file>qml/views/TodoList.qml</file>
-        <file>qml/views/TodoItem.qml</file>
         <file>qml/views/panel/SliderDropDown.qml</file>
         <file>qml/views/panel/ProjectsPanelRoot.qml</file>
         <file>qml/views/workspace/WorkspaceRoot.qml</file>
-        <file>qml/middlewares/DialogMiddleware.qml</file>
         <file>qml/middlewares/SystemMiddleware.qml</file>
-        <file>qml/stores/UserPrefsStore.qml</file>
         <file>qml/stores/qmldir</file>
-        <file>qml/stores/TodoStore.qml</file>
         <file>qml/stores/RootStore.qml</file>
         <file>qml/stores/MainStore.qml</file>
         <file>qml/actions/ActionTypes.qml</file>

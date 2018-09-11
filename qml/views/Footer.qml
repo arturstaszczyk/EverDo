@@ -15,28 +15,5 @@ Item {
         font.weight: Font.Thin
 
     }
-
-//    function add() {
-//        AppActions.addTask(textField.text);
-//        textField.text = "";
-//    }
-
-//    RowLayout {
-//        anchors.fill: parent
-
-//        TextField {
-//            id: textField
-//            Layout.fillWidth: true
-//            focus: true
-//            onAccepted: add();
-//        }
-
-//        Button {
-//            text: "ADD"
-//            onClicked: {
-//                add();
-//            }
-//        }
-//    }
 }
 

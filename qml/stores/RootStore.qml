@@ -3,18 +3,6 @@ import QuickFlux 1.1
 
 Store {
 
-    property alias todo: todo
-
-    TodoStore {
-        id: todo
-    }
-
-    property alias userPrefs: userPrefs
-
-    UserPrefsStore {
-        id: userPrefs
-    }
-
     property alias projectsPanelStore: projectsPanelStore
 
     ProjectsPanelStore {

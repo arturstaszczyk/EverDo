@@ -7,7 +7,9 @@ int main(int argc, char *argv[])
 {
     qputenv("QML_DISABLE_DISK_CACHE", "true");
 
-    QGuiApplication app(argc, argv);
+    char* a[0];
+    int b = 0;
+    QGuiApplication app(b, a);
 
     registerQuickFluxQmlTypes(); // It is not necessary to call this function if the QuickFlux library is installed via qpm
 
@@ -19,4 +21,3 @@ int main(int argc, char *argv[])
 
     return app.exec();
 }
-

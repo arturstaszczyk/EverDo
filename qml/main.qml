@@ -14,13 +14,11 @@ Item {
         SystemMiddleware {
             mainWindow: mainWindow
         }
-
-        DialogMiddleware {
-        }
     }
 
     MainWindow {
         id: mainWindow
+        visible: true
     }
 }
 
