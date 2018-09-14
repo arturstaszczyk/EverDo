@@ -10,7 +10,7 @@ Item {
 
     property var projectTypes: MainStore.projectsPanelStore.projectTypes
 
-    property int selectedProjectTypeGuid: MainStore.projectsPanelStore.selectedProject
+    property int selectedProjectTypeGuid: MainStore.projectsPanelStore.selectedProjectType
 
     SpaceCointainer {
         anchors.fill: parent

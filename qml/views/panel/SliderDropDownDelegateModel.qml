@@ -10,7 +10,7 @@ DelegateModel {
 
     property int headerGuid
 
-    property int selectedProjectType: MainStore.projectsPanelStore.selectedProject
+    property int selectedProjectType: MainStore.projectsPanelStore.selectedProjectType
 
     model: MainStore.projectsPanelStore.projects
 

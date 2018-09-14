@@ -3,12 +3,10 @@ import QuickFlux 1.1
 import "../actions/panel"
 
 Store {
+    property int selectedProjectType
+    property int selectedProject
 
     property alias projects: projects
-
-    property alias projectTypes: projectTypes
-
-    property int selectedProject
 
     ListModel {
         id: projects
@@ -32,6 +30,8 @@ Store {
         }
     }
 
+    property alias projectTypes: projectTypes
+
     ListModel {
         id: projectTypes
 
@@ -54,13 +54,22 @@ Store {
     Filter {
         type: ProjectsPanelActionTypes.selectProjectType
         onDispatched: {
-            if(selectedProject === message.guid) {
-                selectedProject = ""
+            if(selectedProjectType === message.guid) {
+                selectedProjectType = ""
             } else {
-                selectedProject = message.guid
+                selectedProjectType = message.guid
             }
 
             console.log("selectProjectType: " + message.guid)
+        }
+    }
+
+    Filter {
+        type: ProjectsPanelActionTypes.selectProject
+        onDispatched: {
+            selectedProject = message.guid
+
+            console.log("selectProject" + message.guid)
         }
     }
 }

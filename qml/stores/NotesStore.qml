@@ -5,8 +5,6 @@ import "../actions"
 
 Store {
 
-    property int currentProject
-
     property int currentFilter
 
     ListModel {
@@ -25,14 +23,6 @@ Store {
             ]
             columnGuid: 0x41
             projectGuid: 0x11
-        }
-    }
-
-    Filter {
-        type: ProjectsPanelActionsTypes.selectProject
-        onDispatched: {
-            currentProject = message.guid
-            console.log("selectedProject: " + message.guid)
         }
     }
 }
