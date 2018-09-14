@@ -25,12 +25,16 @@ DelegateModel {
     ]
 
     delegate: SliderDropDownItem {
+        id: item
+
         width: parent.width
         height: itemHeight
 
         text: model.name
         guid: model.guid
-        parentGuid: model.type
-        headerGuid: delegateModelDef.headerGuid
+
+        Component.onCompleted: {
+            item.DelegateModel.inRightType = model.type === delegateModelDef.headerGuid
+        }
     }
 }

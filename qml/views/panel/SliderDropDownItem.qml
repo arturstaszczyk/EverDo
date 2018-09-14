@@ -10,10 +10,6 @@ Rectangle {
 
     property int guid
 
-    property int parentGuid
-
-    property int headerGuid
-
     id: item
 
     color: "transparent"
@@ -21,10 +17,6 @@ Rectangle {
     PrimaryText {
         id: itemText
         anchors.fill: parent
-    }
-
-    Component.onCompleted: {
-        item.DelegateModel.inRightType = parentGuid === headerGuid
     }
 
     MouseArea {
