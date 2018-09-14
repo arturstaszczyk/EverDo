@@ -17,8 +17,10 @@ SpaceCointainer {
 
         anchors.fill: parent
 
-        onClicked: {
-            console.log("Filter " + button + " clicked")
+        selectedToggles: MainStore.filtersStore.selectedFilters
+
+        onChanged: {
+            FiltersActions.updateFilters(selectedToggles)
         }
     }
 

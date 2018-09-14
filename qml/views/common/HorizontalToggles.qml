@@ -8,7 +8,7 @@ Item {
     property alias model: toggleRepeater.model
     property var selectedToggles: []
 
-    signal clicked(var selectedToggles)
+    signal changed(var selectedToggles)
 
     RowLayout {
         anchors.fill: parent
@@ -26,16 +26,16 @@ Item {
 
                 onClicked: {
                     if(selectedToggles.find(function(element){
-                        return element === toggleName
+                        return element === toggleGuid
                     })) {
                         selectedToggles = selectedToggles.filter(function(value) {
-                            return value !== toggleName
+                            return value !== toggleGuid
                         })
                     } else {
-                        selectedToggles.push(toggleName)
+                        selectedToggles.push(toggleGuid)
                     }
 
-                    console.log("Selected filters: " + selectedToggles)
+                    changed(selectedToggles)
                 }
             }
         }

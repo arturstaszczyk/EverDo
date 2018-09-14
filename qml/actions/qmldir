@@ -2,3 +2,5 @@ singleton AppActions 0.1 AppActions.qml
 singleton ActionTypes 0.1 ActionTypes.qml
 singleton ProjectsPanelActions 0.1 panel/ProjectsPanelActions.qml
 singleton ProjectsPanelActionsTypes 0.1 panel/ProjectsPanelActionTypes.qml
+singleton FiltersActions 0.1 filters/FiltersActions.qml
+singleton FiltersActionTypes 0.1 filters/FiltersActionTypes.qml

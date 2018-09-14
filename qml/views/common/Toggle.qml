@@ -8,7 +8,7 @@ Rectangle {
     property string title
     property string guid
 
-    signal clicked(string toggleName)
+    signal clicked(string toggleGuid)
 
     color: selected ? Theme.primaryDarkColor : Theme.primaryLightColor
 
