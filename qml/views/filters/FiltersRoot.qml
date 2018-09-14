@@ -12,18 +12,22 @@ SpaceCointainer {
 
     noBorder: true
 
-    HorizontalButtons {
-        id: horizontalButtons
+    HorizontalToggles {
+        id: horizontalToggles
+
         anchors.fill: parent
+
+        onClicked: {
+            console.log("Filter " + button + " clicked")
+        }
     }
 
     Component.onCompleted: {
-        horizontalButtons.model = Qt.binding(function() {
+        horizontalToggles.model = Qt.binding(function() {
             var newModel = []
             for(var i = 0; i < filters.count; ++i) {
-                newModel.push(filters.get(i).name)
+                newModel.push(filters.get(i))
             }
-
             return newModel
         })
     }
