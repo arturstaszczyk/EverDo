@@ -3,6 +3,8 @@ import QuickFlux 1.1
 
 Store {
 
+    property string selectedFilters
+
     property alias model: filtersModel
 
     ListModel {

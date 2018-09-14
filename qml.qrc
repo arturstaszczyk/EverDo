@@ -28,5 +28,7 @@
         <file>qml/stores/ColumnsStore.qml</file>
         <file>qml/views/common/HorizontalButtons.qml</file>
         <file>qml/views/common/DebugRect.qml</file>
+        <file>qml/views/workspace/Note.qml</file>
+        <file>qml/views/workspace/WorkspaceColumn.qml</file>
     </qresource>
 </RCC>
