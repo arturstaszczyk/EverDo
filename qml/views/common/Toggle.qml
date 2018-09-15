@@ -6,9 +6,9 @@ Rectangle {
 
     property bool selected: false
     property string title
-    property string guid
+    property int guid
 
-    signal clicked(string toggleGuid)
+    signal clicked(int toggleGuid)
 
     color: selected ? Theme.primaryDarkColor : Theme.primaryLightColor
 

@@ -14,7 +14,6 @@ Item {
         id: footerText
         anchors.centerIn: parent
 
-        text: selectedProject + "\n" + selectedFilters
         font.italic: true
         font.pixelSize: 18
         font.weight: Font.Thin
@@ -23,6 +22,7 @@ Item {
             footerText.text = Qt.binding(function(){
                 var allTypes = MainStore.projectsPanelStore.projectTypes
                 var allProjects = MainStore.projectsPanelStore.projects
+                var allFilters = MainStore.filtersStore.model
 
                 var projectType = allTypes.find(function(element){
                     return element.guid === selectedProjectType
@@ -31,8 +31,16 @@ Item {
                 var project = allProjects.find(function(element){
                     return element.guid === selectedProject
                 })
+
+                var filters = allFilters.filter(function(element){
+                    return selectedFilters.find(function(selected) {
+                        return selected === element.guid
+                    })
+                }).map(function(element){ return element.name })
+
                 var verbatim = projectType ? "Project: " + projectType.name : ""
                 verbatim += project ? " \\ " + project.name : ""
+                verbatim += filters.length ? "\nFilters: " + JSON.stringify(filters) : ""
 
                 return verbatim
             })
