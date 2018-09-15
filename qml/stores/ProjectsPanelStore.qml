@@ -53,6 +53,8 @@ Store {
                 selectedProjectType = message.guid
             }
 
+            selectedProject = 0
+
             console.log("selectProjectType: " + message.guid)
         }
     }

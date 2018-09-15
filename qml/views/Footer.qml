@@ -22,11 +22,19 @@ Item {
         Component.onCompleted: {
             footerText.text = Qt.binding(function(){
                 var allTypes = MainStore.projectsPanelStore.projectTypes
+                var allProjects = MainStore.projectsPanelStore.projects
 
                 var projectType = allTypes.find(function(element){
                     return element.guid === selectedProjectType
                 })
-                return projectType ? "Project type: " + projectType.name : ""
+
+                var project = allProjects.find(function(element){
+                    return element.guid === selectedProject
+                })
+                var verbatim = projectType ? "Project: " + projectType.name : ""
+                verbatim += project ? " \\ " + project.name : ""
+
+                return verbatim
             })
         }
 
