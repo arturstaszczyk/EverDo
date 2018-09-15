@@ -11,7 +11,7 @@ import "./actions"
 import "./views/common/theme.js" as Theme
 
 Window {
-    width: 480
+    width: 1024
     height: 640
     visible: true
 

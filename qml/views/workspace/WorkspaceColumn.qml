@@ -5,20 +5,37 @@ import "../common/theme.js" as Theme
 
 SpaceCointainer {
     property alias name: columnHeader.text
-
     property string selectedProject
+    property var appliedFilters: []
 
     color: Theme.secondaryLightColor
 
-    SpaceCointainer {
-        width: parent.width
-        height: Theme.basicElementHeight
+    Column {
+        anchors.fill: parent
+        spacing: Theme.basicElementSpacing
 
-        color: "white"
+        SpaceCointainer {
+            width: parent.width
+            height: Theme.basicElementHeight
 
-        PrimaryText {
-            id: columnHeader
-            anchors.fill: parent
+            color: "white"
+
+            PrimaryText {
+                id: columnHeader
+                anchors.fill: parent
+            }
         }
+
+        Repeater {
+            model: 3
+
+            NotePlaceholder {
+                width: parent.width
+                height: 32
+            }
+        }
+
+
     }
+
 }

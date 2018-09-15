@@ -21,7 +21,7 @@ Item {
 
                         name: modelData.name
                         selectedProject: MainStore.projectsPanelStore.selectedProject
-                        //appliedFilters: MainStore.filtersStore
+                        appliedFilters: MainStore.filtersStore.selectedFilters
                     }
             }
         }
