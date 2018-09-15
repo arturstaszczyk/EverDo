@@ -17,7 +17,6 @@ SpaceCointainer {
 
         anchors.fill: parent
 
-        model: filters
         selectedToggles: MainStore.filtersStore.selectedFilters
 
         onChanged: {
@@ -25,18 +24,10 @@ SpaceCointainer {
         }
     }
 
-//    Component.onCompleted: {
-//        horizontalToggles.model = Qt.binding(function() {
-//            return filters.reduce(function(element) {
-//                return
-//            })
-//            var newModel = [];
-//            for(var i = 0; i <
-//                newModel.push(model)
-//                console.log(filters[0].name)
-//            }
-//            return newModel
-//        })
-//    }
+    Component.onCompleted: {
+        horizontalToggles.model = Qt.binding(function() {
+            return filters
+        })
+    }
 }
 

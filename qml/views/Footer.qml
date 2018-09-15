@@ -1,13 +1,13 @@
-import QtQuick 2.0
-import QtQuick.Controls 1.0
-import QtQuick.Layouts 1.0
+import QtQuick 2.9
+import QtQuick.Controls 1.4
+import QtQuick.Layouts 1.3
 import "../stores"
 
 Item {
     height: 56
 
-    property string selectedProject: MainStore.projectsPanelStore.selectedProject
-    property string selectedProjectType: MainStore.projectsPanelStore.selectedProjectType
+    property int selectedProject: MainStore.projectsPanelStore.selectedProject
+    property int selectedProjectType: MainStore.projectsPanelStore.selectedProjectType
     property var selectedFilters: MainStore.filtersStore.selectedFilters
 
     Text {
@@ -20,9 +20,14 @@ Item {
         font.weight: Font.Thin
 
         Component.onCompleted: {
-            //string projectType = MainStore.projectsPanelStore.projectTypes.filter
+            footerText.text = Qt.binding(function(){
+                var allTypes = MainStore.projectsPanelStore.projectTypes
 
-            footerText.text = ""
+                var projectType = allTypes.find(function(element){
+                    return element.guid === selectedProjectType
+                })
+                return projectType ? "Project type: " + projectType.name : ""
+            })
         }
 
     }

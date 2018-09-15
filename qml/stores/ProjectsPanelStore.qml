@@ -3,8 +3,8 @@ import QuickFlux 1.1
 import "../actions/panel"
 
 Store {
-    property int selectedProjectType
-    property int selectedProject
+    property int selectedProjectType//: 0x1
+    property int selectedProject//: 0x10
 
     property var projects: [
         {
