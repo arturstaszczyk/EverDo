@@ -23,12 +23,12 @@ Item {
                 model: projectTypes
 
                 SliderDropDown {
-                    headerGuid: model.guid
-                    headerText: model.name
+                    headerGuid: modelData.guid
+                    headerText: modelData.name
                     headerHeight: 22
 
                     width: parent.width
-                    selected: model.guid === selectedProjectTypeGuid
+                    selected: modelData.guid === selectedProjectTypeGuid
                 }
             }
         }

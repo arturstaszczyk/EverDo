@@ -3,29 +3,22 @@ import QuickFlux 1.1
 
 Store {
 
-    property alias model: model
-
-    ListModel {
-        id: model
-
-        ListElement {
-            guid: 0x41
-            name: "Do"
+    property var model: [
+        {
+            "guid": 0x40,
+            "name": "Do"
+        },
+        {
+            "guid": 0x41,
+            "name": "Waiting"
+        },
+        {
+            "guid": 0x42,
+            "name": "Delegated"
+        },
+        {
+            "guid": 0x43,
+            "name": "Scheduled"
         }
-
-        ListElement {
-            guid: 0x42
-            name: "Waiting"
-        }
-
-        ListElement {
-            guid: 0x43
-            name: "delegated"
-        }
-
-        ListElement {
-            guid: 0x43
-            name: "scheduled"
-        }
-    }
+    ]
 }

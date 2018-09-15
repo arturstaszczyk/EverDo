@@ -19,7 +19,7 @@ Item {
                         Layout.fillHeight: true
                         Layout.fillWidth: true
 
-                        name: model.name
+                        name: modelData.name
                         selectedProject: MainStore.projectsPanelStore.selectedProject
                         //appliedFilters: MainStore.filtersStore
                     }

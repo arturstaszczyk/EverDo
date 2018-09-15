@@ -30,11 +30,11 @@ DelegateModel {
         width: parent.width
         height: itemHeight
 
-        text: model.name
-        guid: model.guid
+        text: modelData.name
+        guid: modelData.guid
 
         Component.onCompleted: {
-            item.DelegateModel.inRightType = model.type === delegateModelDef.headerGuid
+            item.DelegateModel.inRightType = modelData.type === delegateModelDef.headerGuid
         }
     }
 }

@@ -6,50 +6,43 @@ Store {
     property int selectedProjectType
     property int selectedProject
 
-    property alias projects: projects
+    property var projects: [
+        {
+            "name": "ProjectA",
+            "guid": 0x10,
+            "type": 0x1
+        },
+        {
+            "name": "ProjectB",
+            "guid": 0x11,
+            "type": 0x1
+        },
+        {
+            "name": "ProjectC",
+            "guid": 0x12,
+            "type": 0x2
+        },
+        {
+            "name": "ProjectD",
+            "guid": 0x13,
+            "type": 0x3
+        },
+    ]
 
-    ListModel {
-        id: projects
-
-        ListElement {
-            name: "ProjectA"
-            guid: 0x10
-            type: 0x1
-        }
-
-        ListElement {
-            name: "ProjectB"
-            guid: 0x11
-            type: 0x1
-        }
-
-        ListElement {
-            name: "ProjectC"
-            guid: 0x12
-            type: 0x2
-        }
-    }
-
-    property alias projectTypes: projectTypes
-
-    ListModel {
-        id: projectTypes
-
-        ListElement {
-            name: "In Progress"
-            guid: 0x1
-        }
-
-        ListElement {
-            name: "Someday/Maybe"
-            guid: 0x2
-        }
-
-        ListElement {
-            name: "Waiting"
-            guid: 0x3
-        }
-    }
+    property var projectTypes: [
+        {
+            "name": "In Progress",
+            "guid": 0x1
+        },
+        {
+            "name": "Someday",
+            "guid": 0x2
+        },
+        {
+            "name": "Waiting",
+            "guid": 0x3
+        },
+    ]
 
     Filter {
         type: ProjectsPanelActionTypes.selectProjectType
