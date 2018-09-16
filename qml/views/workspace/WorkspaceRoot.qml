@@ -19,7 +19,7 @@ Item {
                         Layout.fillHeight: true
                         Layout.fillWidth: true
 
-                        name: modelData.name
+                        columnData: modelData
                     }
             }
         }

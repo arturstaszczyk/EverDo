@@ -47,7 +47,6 @@ Item {
             clip: true
             boundsBehavior: Flickable.StopAtBounds
 
-
             model: SliderDropDownDelegateModel {
                 id: contentModel
                 itemHeight: headerHeight

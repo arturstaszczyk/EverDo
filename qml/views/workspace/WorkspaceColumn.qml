@@ -5,7 +5,7 @@ import "../common/theme.js" as Theme
 import "../../stores"
 
 SpaceCointainer {
-    property alias name: columnHeader.text
+    property var columnData
     property int selectedProject: MainStore.projectsPanelStore.selectedProject
     property var appliedFilters: MainStore.filtersStore.selectedFilters
     property var notes
@@ -20,12 +20,12 @@ SpaceCointainer {
 
     }
 
-    Column {
+    ColumnLayout {
         anchors.fill: parent
         spacing: Theme.basicElementSpacing
 
         SpaceCointainer {
-            width: parent.width
+            Layout.fillWidth: true
             height: Theme.basicElementHeight
 
             color: "white"
@@ -33,22 +33,37 @@ SpaceCointainer {
             PrimaryText {
                 id: columnHeader
                 anchors.fill: parent
+
+                text: columnData.name
             }
         }
 
-        Repeater {
-            model: notes
+        ListView {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            spacing: Theme.basicElementSpacing
 
-            NotePlaceholder {
-                width: parent.width
-                height: 32
+            clip: true
+            boundsBehavior: Flickable.StopAtBounds
 
-                Note {
-                    anchors.fill: parent
-                    title: modelData.title
-                }
+            model: Note {
+                currentColumn: columnData.guid
             }
         }
+
+//        Repeater {
+//            model: notes
+
+//            NotePlaceholder {
+//                width: parent.width
+//                height: 32
+
+//                Note {
+//                    anchors.fill: parent
+//                    title: modelData.title
+//                }
+//            }
+//        }
 
 
     }

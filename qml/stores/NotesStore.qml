@@ -17,8 +17,16 @@ Store {
             ],
             "columnGuid": 0x41,
             "projectGuid": 0x11
-        }
-
+        },
+        {
+            "guid": 0x52,
+            "title": 'Awesome note',
+            "filters": [
+                0x21,
+            ],
+            "columnGuid": 0x42,
+            "projectGuid": 0x12
+        },
     ]
 
 }
