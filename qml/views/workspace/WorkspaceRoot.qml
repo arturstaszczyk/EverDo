@@ -5,6 +5,8 @@ import "../common"
 import "../../stores"
 
 Item {
+    property var columns: MainStore.columnsStore.model
+
     SpaceCointainer {
         anchors.fill: parent
         noBorder: true
@@ -13,7 +15,7 @@ Item {
             anchors.fill: parent
 
                 Repeater {
-                    model: MainStore.columnsStore.model
+                    model: columns
 
                     delegate: WorkspaceColumn {
                         Layout.fillHeight: true

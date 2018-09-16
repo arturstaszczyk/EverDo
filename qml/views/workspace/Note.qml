@@ -1,48 +1,21 @@
 import QtQuick 2.9
-import QtQml.Models 2.3
 import "../common"
-import "../../stores"
 
-DelegateModel {
+Rectangle {
 
-    property int currentColumn
+    property alias title: noteTitle.text
 
-    groups: [
-        DelegateModelGroup {
-            name: "rightNote"
-        }
-    ]
+    id: note
 
-    model: MainStore.notesStore.model
+    width: parent.width
+    height: 30
 
-    Component.onCompleted: {
-        for(var i = 0; i < items.count; ++i) {
-            var item = items.get(i)
-            var modelData = items.get(i).model.modelData
+    PrimaryText {
+        id: noteTitle
+        text: modelData.title
 
-            item.inRightNote = modelData.columnGuid === currentColumn
-        }
-
-        filterOnGroup = "rightNote"
-    }
-
-    delegate: Rectangle {
-        id: note
-        width: parent.width
-        height: 30
-
-        PrimaryText {
-            id: noteTitle
-            text: modelData.title
-
-            anchors.fill: parent
-            verticalAlignment: Qt.AlignVCenter
-            horizontalAlignment: Qt.AlignLeft
-        }
-
-//        Component.onCompleted: {
-//            note.DelegateModel.inRightNote = modelData.columnGuid === currentColumn
-//            console.log(modelData.columnGuid === currentColumn)
-//        }
+        anchors.fill: parent
+        verticalAlignment: Qt.AlignVCenter
+        horizontalAlignment: Qt.AlignLeft
     }
 }
