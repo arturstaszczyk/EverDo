@@ -8,7 +8,10 @@ Item {
     property var columns: MainStore.columnsStore.model
     property var notes: {
         return MainStore.notesStore.model.filter(function(element){
-            return element.projectGuid === selectedProject
+            var filteredNotes = element.filters.filter(function(value){
+                return -1 !== appliedFilters.indexOf(value) || appliedFilters.length === 0;
+            })
+            return element.projectGuid === selectedProject && filteredNotes.length > 0
         })
     }
 
