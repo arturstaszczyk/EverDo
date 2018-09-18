@@ -33,7 +33,6 @@
         <file>qml/actions/filters/FiltersActions.qml</file>
         <file>qml/actions/filters/FiltersActionTypes.qml</file>
         <file>qml/views/workspace/NotePlaceholder.qml</file>
-        <file>qml/views/workspace/NoteDelegateModel.qml</file>
         <file>qml/views/workspace/Note.qml</file>
         <file>qml/views/workspace/WorkspaceColumnHeader.qml</file>
     </qresource>

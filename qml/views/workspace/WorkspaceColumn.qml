@@ -6,6 +6,7 @@ import "../../stores"
 
 SpaceCointainer {
     property var columnData
+    property var notesData
 
     color: Theme.secondaryLightColor
 
@@ -27,11 +28,20 @@ SpaceCointainer {
             clip: true
             boundsBehavior: Flickable.StopAtBounds
 
-            model: NoteDelegateModel {
-                currentColumn: columnData.guid
+            model: {
+                return notesData.filter(function(element){
+                    return element.columnGuid === columnData.guid
+                })
+            }
+
+            delegate: Note {
+                id: note
+
+                width: parent.width
+                height: 30
+
+                title: modelData.title
             }
         }
-
     }
-
 }

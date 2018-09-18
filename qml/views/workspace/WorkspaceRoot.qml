@@ -6,6 +6,14 @@ import "../../stores"
 
 Item {
     property var columns: MainStore.columnsStore.model
+    property var notes: {
+        return MainStore.notesStore.model.filter(function(element){
+            return element.projectGuid === selectedProject
+        })
+    }
+
+    property int selectedProject: MainStore.projectsPanelStore.selectedProject
+    property var appliedFilters: MainStore.filtersStore.selectedFilters
 
     SpaceCointainer {
         anchors.fill: parent
@@ -22,6 +30,7 @@ Item {
                         Layout.fillWidth: true
 
                         columnData: modelData
+                        notesData: notes
                     }
             }
         }
