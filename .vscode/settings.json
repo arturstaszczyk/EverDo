@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "qfappdispatcher": "cpp",
+        "quickflux": "cpp",
+        "qfkeytable": "cpp",
+        "qobject": "cpp",
+        "qqmlapplicationengine": "cpp",
+        "qguiapplication": "cpp"
+    },
+    "C_Cpp.intelliSenseEngineFallback": "Enabled"
+}

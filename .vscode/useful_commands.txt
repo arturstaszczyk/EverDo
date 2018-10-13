@@ -1,0 +1,1 @@
+find . -name "*.framework" | awk '{ system("echo \\\"`pwd``echo "$1" | cut -c2-`/Headers\\\","); }' | pbcopy
