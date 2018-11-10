@@ -8,13 +8,24 @@ Rectangle {
     property string title
     property int guid
 
+
     signal clicked(int toggleGuid)
 
-    color: selected ? Theme.primaryDarkColor : Theme.primaryLightColor
+    color: selected ? Theme.evernoteButtonHighlight : Theme.evernoteButton
+    radius: 4
+
+    border.width: 2
+    border.color: selected ? Theme.evernoteButton : Theme.evernoteButtonHighlight
 
     PrimaryText {
         anchors.fill: parent
         text: title
+
+        font.pointSize: 18
+        font.bold: true
+        font.family: "Skia"
+
+        color: selected ? Theme.evernoteButton : Theme.evernoteButtonHighlight
     }
 
     MouseArea {

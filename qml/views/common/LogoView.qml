@@ -1,7 +1,7 @@
 import QtQuick 2.9
 
-Rectangle {
-    color: "transparent"
+SpaceCointainer {
+    noBorder: true
 
     PrimaryText {
         anchors.fill: parent
