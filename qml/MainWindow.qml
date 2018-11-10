@@ -8,6 +8,7 @@ import "./views/workspace"
 import "./views/filters"
 import "./middlewares"
 import "./actions"
+import "./views/common"
 import "./views/common/theme.js" as Theme
 
 Window {
@@ -15,14 +16,31 @@ Window {
     height: 640
     visible: true
 
+    property int leftPanelSize: 200
+
+    color: Theme.evernotePrimaryGreen
+
     ColumnLayout {
         anchors.fill: parent
         anchors.margins: Theme.basicElementSpacing
 
-        FiltersRoot {
+        RowLayout {
             Layout.fillWidth: true
-            Layout.fillHeight: false
-            height: Theme.basicElementHeight
+
+            LogoView {
+                Layout.fillWidth: false
+                Layout.fillHeight: false
+
+                width: leftPanelSize
+                height: Theme.headerHeight
+            }
+
+            FiltersRoot {
+                Layout.fillWidth: true
+                Layout.fillHeight: false
+
+                height: Theme.headerHeight
+            }
         }
 
         RowLayout {
@@ -31,6 +49,7 @@ Window {
 
             ProjectsPanelRoot {
                 Layout.fillHeight: true
+                width: leftPanelSize
             }
 
             WorkspaceRoot {

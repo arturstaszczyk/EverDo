@@ -4,8 +4,6 @@ import "../../stores"
 import "../common"
 
 Item {
-    width: 150
-
     id: panel
 
     property var projectTypes: MainStore.projectsPanelStore.projectTypes
