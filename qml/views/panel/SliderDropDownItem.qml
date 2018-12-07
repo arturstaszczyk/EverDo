@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQml.Models 2.3
 
 import "../common"
+import "../common/theme.js" as Theme
 import "../../actions"
 
 Rectangle {
@@ -12,11 +13,13 @@ Rectangle {
 
     id: item
 
-    color: "transparent"
+    color: Theme.evernoteSecondaryGreen
 
     PrimaryText {
         id: itemText
         anchors.fill: parent
+
+        color: Theme.evernoteWhite
     }
 
     MouseArea {

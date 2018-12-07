@@ -21,10 +21,6 @@ Rectangle {
         anchors.fill: parent
         text: title
 
-        font.pointSize: 18
-        font.bold: true
-        font.family: "Skia"
-
         color: selected ? Theme.evernoteButton : Theme.evernoteButtonHighlight
     }
 

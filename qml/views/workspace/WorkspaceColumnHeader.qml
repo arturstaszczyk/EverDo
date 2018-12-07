@@ -1,10 +1,11 @@
 import QtQuick 2.9
 import "../common"
+import "../common/theme.js" as Theme
 
 SpaceCointainer {
     property alias text: columnHeader.text
 
-    color: "white"
+    color: Theme.evernoteWhite
 
     PrimaryText {
         id: columnHeader

@@ -14,6 +14,8 @@ var basicElementSpacing = 12
 var headerHeight = 48
 
 var evernotePrimaryGreen = "#4BA440"
+var evernoteSecondaryGreen = "#AA4BA440"
 
+var evernoteWhite = "#EEEEEE"
 var evernoteButton = "#EEEEEE"
 var evernoteButtonHighlight = "#4BA440"

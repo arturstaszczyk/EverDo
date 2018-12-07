@@ -7,6 +7,9 @@ Rectangle {
 
     color: "transparent"
 
-    border.width: noBorder ? 0 : 1
-    border.color: Theme.primaryColor
+    radius: 4
+    border.width: noBorder ? 0 : 2
+    border.color: Theme.evernotePrimaryGreen
+
+    clip: true
 }

@@ -8,7 +8,7 @@ SpaceCointainer {
     property var columnData
     property var notesData
 
-    color: Theme.secondaryLightColor
+    color: Theme.evernoteWhite
 
     ColumnLayout {
         anchors.fill: parent
