@@ -20,7 +20,7 @@ SOURCES += main.cpp \
 RESOURCES += qml.qrc
 
 INCLUDEPATH += /usr/local/include
-LIBS += -L/usr/local/lib -lthrift
+LIBS += -L/usr/local/lib -lthrift -lyaml-cpp
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH = $$PWD/qml
@@ -28,8 +28,13 @@ QML_IMPORT_PATH = $$PWD/qml
 # If you install QuickFlux by qpm.pri, change it to include(vendor/vendor.pri)
 include($$PWD/quickflux/quickflux.pri)
 
+APP_CONFIG_FILES.files = config.yaml
+APP_CONFIG_FILES.path = Contents/Resources
+QMAKE_BUNDLE_DATA += APP_CONFIG_FILES
+
 DISTFILES += \
-    README.md
+    README.md \
+    config.yaml
 
 HEADERS += \
     evernote_sdk/Errors_constants.h \
@@ -43,4 +48,5 @@ HEADERS += \
     evernote_sdk/Types_types.h \
     evernote_sdk/UserStore_constants.h \
     evernote_sdk/UserStore_types.h \
-    evernote_sdk/UserStore.h
+    evernote_sdk/UserStore.h \
+    constants.h
