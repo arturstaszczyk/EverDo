@@ -70,4 +70,7 @@ Thumbs.db
 *.dll
 *.exe
 
-config.yaml
+config-priv.yaml
+evernote-sdk/*.cpp
+evernote-sdk/*.h
+

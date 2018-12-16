@@ -1,3 +1,9 @@
 [submodule "quickflux"]
 	path = quickflux
 	url = https://github.com/benlau/quickflux.git
+[submodule "asyncfuture"]
+	path = asyncfuture
+	url = https://github.com/benlau/asyncfuture.git
+[submodule "evernote-thrift"]
+	path = evernote-thrift
+	url = https://github.com/evernote/evernote-thrift.git

@@ -1,0 +1,3 @@
+userStorePath: /edam/user
+noteStorePath: /shard/s1/notestore
+debugEndpoint: sandbox.evernote.com
