@@ -2,21 +2,13 @@
 #include <QQmlApplicationEngine>
 #include <QFAppDispatcher>
 #include <QuickFlux>
-#include <memory>
 #include <QDebug>
-#include <qcoreapplication.h>
 #include "constants.h"
 
-#include "evernote_sdk/UserStore.h"
-#include "evernote_sdk/NoteStore.h"
-#include "thrift/protocol/TBinaryProtocol.h"
-#include "thrift/transport/THttpClient.h"
-#include "thrift/transport/TSSLSocket.h"
-#include <yaml-cpp/yaml.h>
+#include "evernote/evernote.h"
+#include "everdo/projectsservice.h"
 
-using namespace apache::thrift::protocol;
-using namespace apache::thrift::transport;
-using namespace evernote::edam;
+using namespace EverDo;
 
 class FastListener: public QObject {
 
@@ -24,6 +16,10 @@ public slots:
     void onDispatched(QString type, QJSValue message){
         (void)message;
         qDebug() << "Received: " << type;
+    }
+
+    void onUser(evernote::edam::User user){
+        qDebug() << "Evernote reported user " << user.username.c_str() << " logged in!";
     }
 };
 
@@ -38,40 +34,17 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
-
-    std::unique_ptr<FastListener> listener(new FastListener());
-
     QFAppDispatcher* dispatcher = QFAppDispatcher::instance(&engine);
-    QObject::connect(dispatcher, &QFAppDispatcher::dispatched,
-                     listener.get(), &FastListener::onDispatched);
-
     dispatcher->dispatch("startApp");
 
-    qDebug() << "Hello world";
+//    /std::unique_ptr<FastListener> listener(new FastListener());
 
-    auto path = QCoreApplication::applicationDirPath().toStdString() + "/../Resources/config.yaml";
-    qDebug() << path.c_str();
-    YAML::Node config = YAML::LoadFile(path);
-    EverDo::config::devToken = config["devToken"].as<std::string>();
+    EverDo::Evernote evernote;
+    EverDo::ProjectsService projectsService(dispatcher);
+//    QObject::connect(evernote, &Evernote::userFetched, listener.get(), &FastListener::onUser);
+    QObject::connect(&evernote, &Evernote::tagsFetched, &projectsService, &ProjectsService::onTagsFetched);
 
-    //https://discussion.evernote.com/topic/23931-could-not-refill-buffer/
-    //https://github.com/facebook/fbthrift/blob/master/thrift/lib/cpp/transport/THttpClient.cpp
-    std::shared_ptr<TSSLSocketFactory> sslSocketFactory(new TSSLSocketFactory());
+    evernote.fetchTags();
 
-    auto sslSocketNoteStore = sslSocketFactory->createSocket("sandbox.evernote.com", 443);
-    std::shared_ptr<TTransport> bufferedTransport(new TBufferedTransport(sslSocketNoteStore));
-
-    auto noteStorePath = "/edam/user";
-    auto noteStoreHttpClient = std::shared_ptr<TTransport>(new THttpClient(bufferedTransport, "sandbox.evernote.com", noteStorePath));
-
-    noteStoreHttpClient->open();
-    std::shared_ptr<TProtocol> noteStoreProtocol(new TBinaryProtocol(noteStoreHttpClient));
-
-    evernote::edam::UserStoreClient client(noteStoreProtocol);
-
-    User user;
-    client.getUser(user, EverDo::config::devToken);
-
-    qDebug() << "User: " << user.username.c_str();
     return app.exec();
 }

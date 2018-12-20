@@ -55,7 +55,7 @@ Store {
 
             selectedProject = 0
 
-            console.log("selectProjectType: " + message.guid)
+            console.log("selectProjectType: " + message)
         }
     }
 
@@ -65,6 +65,15 @@ Store {
             selectedProject = message.guid
 
             console.log("selectProject" + message.guid)
+        }
+    }
+
+    Filter {
+        type: ProjectsPanelActionTypes.projectsUpdated
+        onDispatched: {
+            console.log("projectsUpdated " + JSON.stringify(message.parents))
+            projectTypes = message.parents
+            projects = message.projects
         }
     }
 }

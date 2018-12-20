@@ -11,6 +11,7 @@ Middleware {
     property var mainWindow: null
 
     function dispatch(type, message) {
+        console.log("MIDDLEWARE: " + type)
         if (type === ActionTypes.startApp) {
             mainWindow.visible = true;
             return;
