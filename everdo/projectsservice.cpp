@@ -3,8 +3,6 @@
 #include <QCryptographicHash>
 #include <QDataStream>
 
-#include "everdo/DataObjects/project.h"
-
 using namespace EverDo;
 using namespace std;
 using namespace evernote::edam;
