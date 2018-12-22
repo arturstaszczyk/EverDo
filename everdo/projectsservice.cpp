@@ -34,7 +34,7 @@ void ProjectsService::onTagsFetched(const std::vector<Tag>& tags) {
 
     const QList<QVariant>& parents = parentsMap.values();
     parentsList.append(parents);
-    appDispatcher.dispatch("projectsUpdated", QVariantMap({
+    appDispatcher.dispatch("setProjectsDefinition", QVariantMap({
                                                                make_pair("projects", projectList),
                                                                make_pair("parents", parentsList)
                                                            }));

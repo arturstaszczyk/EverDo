@@ -28,4 +28,13 @@ Store {
             console.log(message.newFilters)
         }
     }
+
+    Filter {
+        type: FiltersActionTypes.setFiltersDefinitions
+        onDispatched: {
+            model = message.filters
+            selectedFilters = []
+            console.log("Filters definition: " + JSON.stringify(model))
+        }
+    }
 }

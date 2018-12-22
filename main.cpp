@@ -8,6 +8,7 @@
 #include "evernote/evernote.h"
 #include "everdo/projectsservice.h"
 #include "everdo/columnsservice.h"
+#include "everdo/filtersservice.h"
 
 using namespace EverDo;
 
@@ -28,8 +29,11 @@ int main(int argc, char *argv[])
     EverDo::Evernote evernote;
     EverDo::ProjectsService projectsService(*dispatcher);
     EverDo::ColumnsService columnsService(*dispatcher);
+    EverDo::FiltersService filtersService(*dispatcher);
+
     QObject::connect(&evernote, &Evernote::tagsFetched, &columnsService, &ColumnsService::onTagsFetched);
     QObject::connect(&evernote, &Evernote::tagsFetched, &projectsService, &ProjectsService::onTagsFetched);
+    QObject::connect(&evernote, &Evernote::tagsFetched, &filtersService, &FiltersService::onTagsFetched);
 
     evernote.fetchTags();
 

@@ -8,7 +8,7 @@ KeyTable {
 
     property string selectProject
 
-    property string projectsUpdated
+    property string setProjectsDefinition
 
 }
 

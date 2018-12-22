@@ -32,9 +32,11 @@ HEADERS += \
     constants.h \
     evernote/evernote.h \
     everdo/projectsservice.h \
-    everdo/columnsservice.h
+    everdo/columnsservice.h \
+    everdo/filtersservice.h
 
 SOURCES += main.cpp \
     evernote/evernote.cpp \
     everdo/projectsservice.cpp \
-    everdo/columnsservice.cpp
+    everdo/columnsservice.cpp \
+    everdo/filtersservice.cpp

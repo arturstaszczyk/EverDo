@@ -4,6 +4,6 @@ import QuickFlux 1.0
 
 KeyTable {
 
-    property string columnsUpdated;
+    property string setColumnsDefinition;
 
 }
