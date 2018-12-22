@@ -12,7 +12,7 @@ class ProjectsService : public QObject
 {
     Q_OBJECT
 public:
-    explicit ProjectsService(QFAppDispatcher* appDispatcher, QObject *parent = nullptr);
+    explicit ProjectsService(QFAppDispatcher& appDispatcher, QObject *parent = nullptr);
 
 signals:
 
@@ -24,7 +24,7 @@ private:
     QVariantMap makeParentObject(const evernote::edam::Tag& tag);
 
 private:
-    QFAppDispatcher* appDispatcher;
+    QFAppDispatcher& appDispatcher;
 
 };
 

@@ -3,11 +3,11 @@
 #include <QCryptographicHash>
 #include <QDataStream>
 
-using namespace EverDo;
 using namespace std;
 using namespace evernote::edam;
+using namespace EverDo;
 
-ProjectsService::ProjectsService(QFAppDispatcher* appDispatcher, QObject *parent)
+ProjectsService::ProjectsService(QFAppDispatcher& appDispatcher, QObject *parent)
     : QObject(parent)
     , appDispatcher(appDispatcher)
 {
@@ -34,7 +34,7 @@ void ProjectsService::onTagsFetched(const std::vector<Tag>& tags) {
 
     const QList<QVariant>& parents = parentsMap.values();
     parentsList.append(parents);
-    appDispatcher->dispatch("projectsUpdated", QVariantMap({
+    appDispatcher.dispatch("projectsUpdated", QVariantMap({
                                                                make_pair("projects", projectList),
                                                                make_pair("parents", parentsList)
                                                            }));

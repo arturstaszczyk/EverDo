@@ -7,22 +7,9 @@
 
 #include "evernote/evernote.h"
 #include "everdo/projectsservice.h"
+#include "everdo/columnsservice.h"
 
 using namespace EverDo;
-
-class FastListener: public QObject {
-
-public slots:
-    void onDispatched(QString type, QJSValue message){
-        (void)message;
-        qDebug() << "Received: " << type;
-    }
-
-    void onUser(evernote::edam::User user){
-        qDebug() << "Evernote reported user " << user.username.c_str() << " logged in!";
-    }
-};
-
 
 int main(int argc, char *argv[])
 {
@@ -37,11 +24,11 @@ int main(int argc, char *argv[])
     QFAppDispatcher* dispatcher = QFAppDispatcher::instance(&engine);
     dispatcher->dispatch("startApp");
 
-//    /std::unique_ptr<FastListener> listener(new FastListener());
 
     EverDo::Evernote evernote;
-    EverDo::ProjectsService projectsService(dispatcher);
-//    QObject::connect(evernote, &Evernote::userFetched, listener.get(), &FastListener::onUser);
+    EverDo::ProjectsService projectsService(*dispatcher);
+    EverDo::ColumnsService columnsService(*dispatcher);
+    QObject::connect(&evernote, &Evernote::tagsFetched, &columnsService, &ColumnsService::onTagsFetched);
     QObject::connect(&evernote, &Evernote::tagsFetched, &projectsService, &ProjectsService::onTagsFetched);
 
     evernote.fetchTags();

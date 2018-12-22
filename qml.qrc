@@ -36,5 +36,6 @@
         <file>qml/views/workspace/Note.qml</file>
         <file>qml/views/workspace/WorkspaceColumnHeader.qml</file>
         <file>qml/views/common/LogoView.qml</file>
+        <file>qml/actions/columns/ColumnsActionTypes.qml</file>
     </qresource>
 </RCC>

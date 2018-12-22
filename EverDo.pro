@@ -31,8 +31,10 @@ DISTFILES += \
 HEADERS += \
     constants.h \
     evernote/evernote.h \
-    everdo/projectsservice.h
+    everdo/projectsservice.h \
+    everdo/columnsservice.h
 
 SOURCES += main.cpp \
     evernote/evernote.cpp \
-    everdo/projectsservice.cpp
+    everdo/projectsservice.cpp \
+    everdo/columnsservice.cpp
