@@ -69,9 +69,9 @@ Store {
     }
 
     Filter {
-        type: ProjectsPanelActionTypes.projectsUpdated
+        type: ProjectsPanelActionTypes.setProjectsDefinition
         onDispatched: {
-            console.log("projectsUpdated " + JSON.stringify(message.parents))
+            console.log("Projects definition " + JSON.stringify(message.parents))
             projectTypes = message.parents
             projects = message.projects
         }

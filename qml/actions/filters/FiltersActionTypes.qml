@@ -6,4 +6,6 @@ KeyTable {
 
     property string updateFilters
 
+    property string setFiltersDefinitions
+
 }

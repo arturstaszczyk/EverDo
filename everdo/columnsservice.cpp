@@ -19,7 +19,7 @@ void ColumnsService::onTagsFetched(const std::vector<evernote::edam::Tag>& tags)
         }
     }
 
-    appDispatcher.dispatch("columnsUpdated", QVariantMap({
+    appDispatcher.dispatch("setColumnsDefinition", QVariantMap({
                                                                make_pair("columns", columnsList)
                                                            }));
 }
