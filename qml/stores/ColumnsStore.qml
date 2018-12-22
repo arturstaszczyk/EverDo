@@ -1,5 +1,6 @@
 import QtQuick 2.9
 import QuickFlux 1.1
+import "../actions/columns"
 
 Store {
 
@@ -21,4 +22,12 @@ Store {
             "name": "Scheduled"
         }
     ]
+
+    Filter {
+        type: ColumnsActionTypes.columnsUpdated
+        onDispatched: {
+            console.log("Columns updated", JSON.stringify(message))
+            model = message.columns
+        }
+    }
 }
