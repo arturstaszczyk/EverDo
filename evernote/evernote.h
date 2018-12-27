@@ -32,7 +32,7 @@ namespace EverDo {
         void temporaryTokenFetched(QString& tempToken);
 
     public slots:
-
+        void fetchUser();
         void fetchTags();
         void fetchFiltersList();
         void fetchColumnsList();
@@ -41,7 +41,6 @@ namespace EverDo {
     private:
         void configureUserStore();
         void configureNoteStore();
-        void getUser();
 
     private:
         std::shared_ptr<apache::thrift::transport::TSSLSocketFactory> sslSocketFactory;

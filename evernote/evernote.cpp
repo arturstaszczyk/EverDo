@@ -32,7 +32,6 @@ Evernote::Evernote(QObject *parent)
 
     configureNoteStore();
     configureUserStore();
-    getUser();
 }
 
 void Evernote::configureUserStore() {
@@ -66,7 +65,7 @@ void Evernote::authenticate() {
     auth->authenticate();
 }
 
-void Evernote::getUser() {
+void Evernote::fetchUser() {
     auto userFuture = QtConcurrent::run(threadPool, [=]() {
         userStoreClient->getUser(user, config.devToken);
         qDebug() << "Evernote fetched user: " << user.username.c_str();

@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
     QObject::connect(&evernote, &Evernote::tagsFetched, &projectsService, &ProjectsService::onTagsFetched);
     QObject::connect(&evernote, &Evernote::tagsFetched, &filtersService, &FiltersService::onTagsFetched);
 
-    evernote.fetchTags();
+    //evernote.fetchTags();
 
     return app.exec();
 }
