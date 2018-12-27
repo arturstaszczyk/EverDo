@@ -24,12 +24,14 @@ int main(int argc, char *argv[])
     registerQuickFluxQmlTypes(); // It is not necessary to call this function if the QuickFlux library is installed via qpm
     QtWebEngine::initialize();
     QQmlApplicationEngine engine;
+    EverDo::Evernote evernote;
+
+    engine.rootContext()->setContextProperty("evernote", &evernote);
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
     QFAppDispatcher* dispatcher = QFAppDispatcher::instance(&engine);
     dispatcher->dispatch("startApp");
 
 
-    EverDo::Evernote evernote;
     EverDo::TemporaryTokenService temporaryTokenService(*dispatcher);
     EverDo::ProjectsService projectsService(*dispatcher);
     EverDo::ColumnsService columnsService(*dispatcher);
@@ -41,7 +43,6 @@ int main(int argc, char *argv[])
     QObject::connect(&evernote, &Evernote::tagsFetched, &projectsService, &ProjectsService::onTagsFetched);
     QObject::connect(&evernote, &Evernote::tagsFetched, &filtersService, &FiltersService::onTagsFetched);
 
-    evernote.authenticate();
     evernote.fetchTags();
 
     return app.exec();

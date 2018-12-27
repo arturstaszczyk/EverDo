@@ -22,11 +22,18 @@ Window {
         anchors.fill: parent
         anchors.margins: Theme.basicElementSpacing
 
+        visible: MainStore.authStore.authenticated
+    }
+
+    LoginView {
+        anchors.fill: parent
+        visible: !MainStore.authStore.authenticated
     }
 
     WebView {
         property string token: MainStore.authStore.temporaryToken
         anchors.fill: parent
+        visible: false
 
         onTokenChanged: {
             console.log(token)

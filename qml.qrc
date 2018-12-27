@@ -40,5 +40,9 @@
         <file>qml/stores/AuthStore.qml</file>
         <file>qml/actions/auth/AuthActionTypes.qml</file>
         <file>qml/views/CoreApp.qml</file>
+        <file>qml/views/LoginView.qml</file>
+        <file>qml/views/common/MainButton.qml</file>
+        <file>qml/actions/auth/AuthActions.qml</file>
+        <file>qml/middlewares/AuthMiddleware.qml</file>
     </qresource>
 </RCC>

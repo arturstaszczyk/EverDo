@@ -14,6 +14,10 @@ Item {
         SystemMiddleware {
             mainWindow: mainWindow
         }
+
+        AuthMiddleware {
+
+        }
     }
 
     MainWindow {

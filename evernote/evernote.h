@@ -22,6 +22,8 @@ namespace EverDo {
     public:
         explicit Evernote(QObject *parent = nullptr);
 
+        Q_INVOKABLE void authenticate();
+
     signals:
         void userFetched(evernote::edam::User);
         void urlsFetched(evernote::edam::UserUrls);
@@ -30,7 +32,7 @@ namespace EverDo {
         void temporaryTokenFetched(QString& tempToken);
 
     public slots:
-        void authenticate();
+
         void fetchTags();
         void fetchFiltersList();
         void fetchColumnsList();

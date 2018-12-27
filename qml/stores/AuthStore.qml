@@ -5,6 +5,7 @@ import '../actions/auth'
 Store {
     property string temporaryToken: ""
     property string authToken: ""
+    property bool authenticated: false
 
     Filter {
         type: AuthActionTypes.setTemporaryToken
