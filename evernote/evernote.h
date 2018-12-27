@@ -12,6 +12,7 @@
 #include "thrift/transport/TSSLSocket.h"
 
 #include "constants.h"
+#include "evernoteauth.h"
 
 namespace EverDo {
 
@@ -26,7 +27,10 @@ namespace EverDo {
         void urlsFetched(evernote::edam::UserUrls);
         void tagsFetched(const std::vector<evernote::edam::Tag>&);
 
+        void temporaryTokenFetched(QString& tempToken);
+
     public slots:
+        void authenticate();
         void fetchTags();
         void fetchFiltersList();
         void fetchColumnsList();
@@ -45,7 +49,8 @@ namespace EverDo {
         evernote::edam::User user;
         evernote::edam::UserUrls userUrls;
 
-        QThreadPool threadPool;
+        QThreadPool* threadPool;
+        EverDo::EvernoteAuth *auth;
         EverDo::Config config;
     };
 

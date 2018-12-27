@@ -37,5 +37,8 @@
         <file>qml/views/workspace/WorkspaceColumnHeader.qml</file>
         <file>qml/views/common/LogoView.qml</file>
         <file>qml/actions/columns/ColumnsActionTypes.qml</file>
+        <file>qml/stores/AuthStore.qml</file>
+        <file>qml/actions/auth/AuthActionTypes.qml</file>
+        <file>qml/views/CoreApp.qml</file>
     </qresource>
 </RCC>

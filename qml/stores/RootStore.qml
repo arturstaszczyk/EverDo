@@ -27,4 +27,10 @@ Store {
         id: notesStore
     }
 
+    property alias authStore: authStore
+
+    AuthStore {
+        id: authStore
+    }
+
 }

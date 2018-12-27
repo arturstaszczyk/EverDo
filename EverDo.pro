@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += qml quick concurrent
+QT += qml quick concurrent network webengine
 CONFIG += c++11
 
 RESOURCES += qml.qrc
@@ -31,12 +31,16 @@ DISTFILES += \
 HEADERS += \
     constants.h \
     evernote/evernote.h \
+    evernote/evernoteauth.h \
     everdo/projectsservice.h \
     everdo/columnsservice.h \
-    everdo/filtersservice.h
+    everdo/filtersservice.h \
+    everdo/temporarytokenservice.h
 
 SOURCES += main.cpp \
     evernote/evernote.cpp \
+    evernote/evernoteauth.cpp \
     everdo/projectsservice.cpp \
     everdo/columnsservice.cpp \
-    everdo/filtersservice.cpp
+    everdo/filtersservice.cpp \
+    everdo/temporarytokenservice.cpp

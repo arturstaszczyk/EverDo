@@ -20,13 +20,15 @@ Evernote::Evernote(QObject *parent)
     : QObject(parent)
     , sslSocketFactory(new TSSLSocketFactory())
     , userStoreClient(nullptr)
+    , threadPool(new QThreadPool(this))
 {
-    config.loadConfig();
-
     // According to https://www.openssl.org/docs/faq.html#PROG1
     // all SSL calls within OpenSSL Library must be done from the same thread
-    threadPool.setExpiryTimeout(-1);
-    threadPool.setMaxThreadCount(1);
+    threadPool->setExpiryTimeout(-1);
+    threadPool->setMaxThreadCount(1);
+
+    config.loadConfig();
+    auth = new EvernoteAuth(config, this);
 
     configureNoteStore();
     configureUserStore();
@@ -56,14 +58,22 @@ void Evernote::configureNoteStore() {
     noteStoreClient.reset(new NoteStoreClient(noteStoreProtocol));
 }
 
+void Evernote::authenticate() {
+    QObject::connect(auth, &EvernoteAuth::temporaryTokenFetched, [&](QString tempToken){
+        emit temporaryTokenFetched(tempToken);
+    });
+
+    auth->authenticate();
+}
+
 void Evernote::getUser() {
-    auto userFuture = QtConcurrent::run(&threadPool, [=]() {
+    auto userFuture = QtConcurrent::run(threadPool, [=]() {
         userStoreClient->getUser(user, config.devToken);
         qDebug() << "Evernote fetched user: " << user.username.c_str();
         return user;
     });
 
-    auto urlFuture = QtConcurrent::run(&threadPool, [=]() {
+    auto urlFuture = QtConcurrent::run(threadPool, [=]() {
         userStoreClient->getUserUrls(userUrls, config.devToken);
         qDebug() << "Evernote fetched urls: " << userUrls.noteStoreUrl.c_str();
         return userUrls;
@@ -79,7 +89,7 @@ void Evernote::getUser() {
 }
 
 void Evernote::fetchTags() {
-    auto future = QtConcurrent::run(&threadPool, [=]() {
+    auto future = QtConcurrent::run(threadPool, [=]() {
         vector<evernote::edam::Tag> tags;
         noteStoreClient->listTags(tags, config.devToken);
         return tags;
