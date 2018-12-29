@@ -1,17 +1,20 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <QFAppDispatcher>
-#include <QuickFlux>
 #include <QDebug>
 #include <QObject>
 #include <QtWebEngine>
 #include "constants.h"
+
+#include <QuickFlux>
+#include <QFAppDispatcher>
+#include <qfstore.h>
 
 #include "evernote/evernote.h"
 #include "everdo/columnsservice.h"
 #include "everdo/filtersservice.h"
 #include "everdo/projectsservice.h"
 #include "everdo/temporarytokenservice.h"
+#include "everdo/storeaccessor.h"
 
 using namespace EverDo;
 
@@ -31,6 +34,8 @@ int main(int argc, char *argv[])
     QFAppDispatcher* dispatcher = QFAppDispatcher::instance(&engine);
     dispatcher->dispatch("startApp");
 
+    StoreAccessor::instance(engine);
+
 
     EverDo::TemporaryTokenService temporaryTokenService(*dispatcher);
     EverDo::ProjectsService projectsService(*dispatcher);
@@ -45,6 +50,12 @@ int main(int argc, char *argv[])
     QObject::connect(&evernote, &Evernote::tagsFetched, &projectsService, &ProjectsService::onTagsFetched);
     QObject::connect(&evernote, &Evernote::tagsFetched, &filtersService, &FiltersService::onTagsFetched);
 
+//    QObject* found = engine.rootObjects()[0]->property("mainStore").value<QObject*>();
+//    if(found) {
+//        qDebug() << found->property("authStore").value<QObject*>()->property("authenticated");
+//    } else {
+//        qDebug() << "fail";
+//    }
 
     //evernote.fetchTags();
 

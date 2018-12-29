@@ -35,7 +35,8 @@ HEADERS += \
     everdo/projectsservice.h \
     everdo/columnsservice.h \
     everdo/filtersservice.h \
-    everdo/temporarytokenservice.h
+    everdo/temporarytokenservice.h \
+    everdo/storeaccessor.h
 
 SOURCES += main.cpp \
     evernote/evernote.cpp \
@@ -43,4 +44,5 @@ SOURCES += main.cpp \
     everdo/projectsservice.cpp \
     everdo/columnsservice.cpp \
     everdo/filtersservice.cpp \
-    everdo/temporarytokenservice.cpp
+    everdo/temporarytokenservice.cpp \
+    everdo/storeaccessor.cpp

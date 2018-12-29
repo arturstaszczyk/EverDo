@@ -1,4 +1,5 @@
 #include "evernoteauth.h"
+#include "../EverDo/storeaccessor.h"
 
 #include <QtNetwork>
 
@@ -45,13 +46,14 @@ void EvernoteAuth::authenticate() {
     manager->get(request);
 }
 
-void EvernoteAuth::fetchToken(QString tempToken, QString authVerifier) {
+void EvernoteAuth::fetchToken(QString authVerifier) {
+    auto tempStoreToken = StoreAccessor::instance().getPropertyFromStore<QString>("authStore", "temporaryToken");
     auto credentialsUrlBase = config.urlBase() +
                 "/oauth?oauth_consumer_key=" + config.consumerKey +
                 "&oauth_signature=" + config.consumerSecret +
                 "&oauth_signature_method=PLAINTEXT";
     auto permanentCredUrl = credentialsUrlBase +
-            "&oauth_token=" + tempToken.toStdString() +
+            "&oauth_token=" + tempStoreToken.toStdString() +
             "&oauth_verifier=" + authVerifier.toStdString();
 
     QNetworkAccessManager *manager = new QNetworkAccessManager();

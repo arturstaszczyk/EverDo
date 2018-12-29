@@ -65,12 +65,12 @@ void Evernote::authenticate() {
     auth->authenticate();
 }
 
-void Evernote::fetchToken(QString tempToken, QString oauthVerifier) {
+void Evernote::fetchToken(QString oauthVerifier) {
     QObject::connect(auth, &EvernoteAuth::tokenFetched, [&](QString token){
         emit tokenFetched(token);
     });
 
-    auth->fetchToken(tempToken, oauthVerifier);
+    auth->fetchToken(oauthVerifier);
 }
 
 void Evernote::fetchUser() {

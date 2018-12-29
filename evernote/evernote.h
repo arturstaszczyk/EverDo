@@ -23,7 +23,7 @@ namespace EverDo {
         explicit Evernote(QObject *parent = nullptr);
 
         Q_INVOKABLE void authenticate();
-        Q_INVOKABLE void fetchToken(QString tempToken, QString oauthVerifier);
+        Q_INVOKABLE void fetchToken(QString oauthVerifier);
 
     signals:
         void userFetched(evernote::edam::User);
