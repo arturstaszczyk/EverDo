@@ -7,6 +7,8 @@ KeyTable {
 
     property string setTemporaryToken;
 
+    property string setToken;
+
     property string login;
 
     property string setAuthVerifier;

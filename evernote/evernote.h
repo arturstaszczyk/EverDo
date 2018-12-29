@@ -23,13 +23,15 @@ namespace EverDo {
         explicit Evernote(QObject *parent = nullptr);
 
         Q_INVOKABLE void authenticate();
+        Q_INVOKABLE void fetchToken(QString tempToken, QString oauthVerifier);
 
     signals:
         void userFetched(evernote::edam::User);
         void urlsFetched(evernote::edam::UserUrls);
         void tagsFetched(const std::vector<evernote::edam::Tag>&);
 
-        void temporaryTokenFetched(QString& tempToken);
+        void temporaryTokenFetched(QString tempToken);
+        void tokenFetched(QString tempToken);
 
     public slots:
         void fetchUser();

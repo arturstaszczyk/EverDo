@@ -9,6 +9,10 @@ Middleware {
             evernote.authenticate()
         }
 
+        if(type === AuthActionTypes.setAuthVerifier) {
+            evernote.fetchToken(message.tempToken, message.oauthVerifier)
+        }
+
         next(type, message);
     }
 

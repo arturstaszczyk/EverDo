@@ -46,7 +46,7 @@ Rectangle {
                 })
 
                 console.log(oauthVerifier)
-                AuthActions.setAuthVerifier(oauthVerifier)
+                AuthActions.setAuthVerifier(MainStore.authStore.temporaryToken, oauthVerifier)
             }
 
         }

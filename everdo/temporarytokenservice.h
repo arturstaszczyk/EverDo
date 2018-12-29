@@ -16,6 +16,7 @@ signals:
 
 public slots:
     void onTemporaryTokenFetched(QString tempToken);
+    void onTokenFetched(QString token);
 
 private:
     QFAppDispatcher& appDispatcher;

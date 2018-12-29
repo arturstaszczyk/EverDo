@@ -65,6 +65,14 @@ void Evernote::authenticate() {
     auth->authenticate();
 }
 
+void Evernote::fetchToken(QString tempToken, QString oauthVerifier) {
+    QObject::connect(auth, &EvernoteAuth::tokenFetched, [&](QString token){
+        emit tokenFetched(token);
+    });
+
+    auth->fetchToken(tempToken, oauthVerifier);
+}
+
 void Evernote::fetchUser() {
     auto userFuture = QtConcurrent::run(threadPool, [=]() {
         userStoreClient->getUser(user, config.devToken);

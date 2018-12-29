@@ -17,3 +17,10 @@ void TemporaryTokenService::onTemporaryTokenFetched(QString tempToken) {
 
     appDispatcher.dispatch("setTemporaryToken", param);
 }
+
+void TemporaryTokenService::onTokenFetched(QString token) {
+    auto param = QVariantMap({std::make_pair("token", token)});
+    qDebug() << param;
+
+    appDispatcher.dispatch("setToken", param);
+}

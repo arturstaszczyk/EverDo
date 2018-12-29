@@ -39,9 +39,12 @@ int main(int argc, char *argv[])
 
     QObject::connect(&evernote, &Evernote::temporaryTokenFetched,
                      &temporaryTokenService, &TemporaryTokenService::onTemporaryTokenFetched);
+    QObject::connect(&evernote, &Evernote::tokenFetched,
+                     &temporaryTokenService, &TemporaryTokenService::onTokenFetched);
     QObject::connect(&evernote, &Evernote::tagsFetched, &columnsService, &ColumnsService::onTagsFetched);
     QObject::connect(&evernote, &Evernote::tagsFetched, &projectsService, &ProjectsService::onTagsFetched);
     QObject::connect(&evernote, &Evernote::tagsFetched, &filtersService, &FiltersService::onTagsFetched);
+
 
     //evernote.fetchTags();
 

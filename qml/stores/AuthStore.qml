@@ -16,6 +16,15 @@ Store {
     }
 
     Filter {
+        type: AuthActionTypes.setToken
+        onDispatched: {
+            authToken = message.token
+            if(authToken)
+                authenticated = true
+        }
+    }
+
+    Filter {
         type: AuthActionTypes.setAuthVerifier
         onDispatched: {
             authVerifier = message.oauthVerifier

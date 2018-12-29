@@ -13,9 +13,11 @@ public:
     explicit EvernoteAuth(const EverDo::Config& config, QObject *parent = nullptr);
 
     void authenticate();
+    void fetchToken(QString tempToken, QString authVerifier);
 
 signals:
     void temporaryTokenFetched(QString tempToken);
+    void tokenFetched(QString token);
 
 public slots:
 
