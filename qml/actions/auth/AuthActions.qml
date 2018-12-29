@@ -7,4 +7,6 @@ ActionCreator {
 
     signal login()
 
+    signal setAuthVerifier(string oauthVerifier)
+
 }

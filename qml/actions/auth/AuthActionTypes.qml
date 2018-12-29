@@ -9,4 +9,6 @@ KeyTable {
 
     property string login;
 
+    property string setAuthVerifier;
+
 }

@@ -1,7 +1,6 @@
 import QtQuick 2.3
 import QtQuick.Window 2.2
 import QuickFlux 1.1
-import QtWebView 1.1
 
 import "./views"
 import "./stores"
@@ -28,21 +27,6 @@ Window {
     LoginView {
         anchors.fill: parent
         visible: !MainStore.authStore.authenticated
-    }
-
-    WebView {
-        property string token: MainStore.authStore.temporaryToken
-        anchors.fill: parent
-        visible: false
-
-        onTokenChanged: {
-            console.log(token)
-
-            if(token) {
-                this.visible = true
-                this.url = "https://sandbox.evernote.com/OAuth.action?oauth_token=" + token
-            }
-        }
     }
 }
 

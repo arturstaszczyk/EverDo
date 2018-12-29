@@ -4,6 +4,7 @@ import '../actions/auth'
 
 Store {
     property string temporaryToken: ""
+    property string authVerifier: ""
     property string authToken: ""
     property bool authenticated: false
 
@@ -11,6 +12,13 @@ Store {
         type: AuthActionTypes.setTemporaryToken
         onDispatched: {
            temporaryToken = message.temporaryToken
+        }
+    }
+
+    Filter {
+        type: AuthActionTypes.setAuthVerifier
+        onDispatched: {
+            authVerifier = message.oauthVerifier
         }
     }
 }
