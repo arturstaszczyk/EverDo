@@ -1,14 +1,11 @@
 import QtQuick 2.3
 import QtQuick.Window 2.2
-import QtQuick.Layouts 1.0
 import QuickFlux 1.1
+
 import "./views"
-import "./views/panel"
-import "./views/workspace"
-import "./views/filters"
-import "./middlewares"
+import "./stores"
 import "./actions"
-import "./views/common"
+import "./middlewares"
 import "./views/common/theme.js" as Theme
 
 Window {
@@ -20,49 +17,22 @@ Window {
 
     color: Theme.evernotePrimaryGreen
 
-    ColumnLayout {
+    CoreApp {
         anchors.fill: parent
         anchors.margins: Theme.basicElementSpacing
 
-        RowLayout {
-            Layout.fillWidth: true
-
-            LogoView {
-                Layout.fillWidth: false
-                Layout.fillHeight: false
-
-                width: leftPanelSize
-                height: Theme.headerHeight
-            }
-
-            FiltersRoot {
-                Layout.fillWidth: true
-                Layout.fillHeight: false
-
-                height: Theme.headerHeight
+        visible: MainStore.authStore.authenticated
+        onVisibleChanged: {
+            if(visible){
+                evernote.fetchUser()
+                evernote.fetchTags();
             }
         }
+    }
 
-        RowLayout {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-
-            ProjectsPanelRoot {
-                Layout.fillHeight: true
-                width: leftPanelSize
-            }
-
-            WorkspaceRoot {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-            }
-
-        }
-
-        Footer {
-            Layout.fillWidth: true
-            Layout.fillHeight: false
-        }
+    LoginView {
+        anchors.fill: parent
+        visible: !MainStore.authStore.authenticated
     }
 }
 

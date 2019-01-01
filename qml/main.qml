@@ -5,6 +5,7 @@ import QuickFlux 1.1
 import "./views"
 import "./middlewares"
 import "./actions"
+import "./stores"
 
 Item {
 
@@ -14,11 +15,17 @@ Item {
         SystemMiddleware {
             mainWindow: mainWindow
         }
+
+        AuthMiddleware {
+
+        }
     }
 
     MainWindow {
         id: mainWindow
         visible: true
     }
+
+    property QtObject mainStore: MainStore
 }
 

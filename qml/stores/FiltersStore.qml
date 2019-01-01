@@ -7,18 +7,18 @@ Store {
     property var selectedFilters: []
 
     property var model: [
-        {
-            "guid": 0x20,
-            "name": "Home"
-        },
-        {
-            "guid": 0x21,
-            "name": "Work"
-        },
-        {
-            "guid": 0x22,
-            "name": "City"
-        },
+//        {
+//            "guid": 0x20,
+//            "name": "Home"
+//        },
+//        {
+//            "guid": 0x21,
+//            "name": "Work"
+//        },
+//        {
+//            "guid": 0x22,
+//            "name": "City"
+//        },
     ]
 
     Filter {

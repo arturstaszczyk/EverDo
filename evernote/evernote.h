@@ -12,6 +12,7 @@
 #include "thrift/transport/TSSLSocket.h"
 
 #include "constants.h"
+#include "evernoteauth.h"
 
 namespace EverDo {
 
@@ -21,12 +22,22 @@ namespace EverDo {
     public:
         explicit Evernote(QObject *parent = nullptr);
 
+        Q_INVOKABLE void authenticate();
+        Q_INVOKABLE void fetchToken(QString oauthVerifier);
+
+        Q_INVOKABLE void saveStore(QString data);
+        Q_INVOKABLE QString loadStore();
+
     signals:
         void userFetched(evernote::edam::User);
         void urlsFetched(evernote::edam::UserUrls);
         void tagsFetched(const std::vector<evernote::edam::Tag>&);
 
+        void temporaryTokenFetched(QString tempToken);
+        void tokenFetched(QString tempToken);
+
     public slots:
+        void fetchUser();
         void fetchTags();
         void fetchFiltersList();
         void fetchColumnsList();
@@ -35,7 +46,7 @@ namespace EverDo {
     private:
         void configureUserStore();
         void configureNoteStore();
-        void getUser();
+        std::string getAuthToken();
 
     private:
         std::shared_ptr<apache::thrift::transport::TSSLSocketFactory> sslSocketFactory;
@@ -45,7 +56,8 @@ namespace EverDo {
         evernote::edam::User user;
         evernote::edam::UserUrls userUrls;
 
-        QThreadPool threadPool;
+        QThreadPool* threadPool;
+        EverDo::EvernoteAuth *auth;
         EverDo::Config config;
     };
 

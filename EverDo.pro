@@ -1,7 +1,8 @@
 TEMPLATE = app
 
-QT += qml quick concurrent
-CONFIG += c++11
+QT += qml quick concurrent network webengine
+CONFIG += c++17
+CONFIG += sdk_no_version_check
 
 RESOURCES += qml.qrc
 
@@ -15,6 +16,7 @@ QML_IMPORT_PATH = $$PWD/qml
 include($$PWD/quickflux/quickflux.pri)
 include($$PWD/asyncfuture/asyncfuture.pri)
 include($$PWD/evernote-sdk/evernote-sdk.pri)
+include($$PWD/qtkeychain/qt5keychain.pri)
 
 APP_CONFIG_FILES.files += config.yaml
 APP_CONFIG_FILES.files += config-priv.yaml
@@ -31,12 +33,21 @@ DISTFILES += \
 HEADERS += \
     constants.h \
     evernote/evernote.h \
+    evernote/evernoteauth.h \
     everdo/projectsservice.h \
     everdo/columnsservice.h \
-    everdo/filtersservice.h
+    everdo/filtersservice.h \
+    everdo/temporarytokenservice.h \
+    everdo/storeaccessor.h \
+    everdo/storepersist.h \
+    everdo/keychainstorepersist.h
 
 SOURCES += main.cpp \
     evernote/evernote.cpp \
+    evernote/evernoteauth.cpp \
     everdo/projectsservice.cpp \
     everdo/columnsservice.cpp \
-    everdo/filtersservice.cpp
+    everdo/filtersservice.cpp \
+    everdo/temporarytokenservice.cpp \
+    everdo/storeaccessor.cpp \
+    everdo/keychainstorepersist.cpp
