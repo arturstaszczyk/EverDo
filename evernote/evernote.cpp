@@ -5,13 +5,12 @@
 
 #include "asyncfuture.h"
 #include "everdo/storeaccessor.h"
+#include "everdo/keychainstorepersist.h"
 
 #include "evernote-sdk/NoteStore.h"
 #include "thrift/protocol/TBinaryProtocol.h"
 #include "thrift/transport/THttpClient.h"
 #include "thrift/transport/TSSLSocket.h"
-
-#include "qtkeychain/keychain.h"
 
 
 using namespace apache::thrift::protocol;
@@ -92,40 +91,13 @@ void Evernote::fetchToken(QString oauthVerifier) {
 }
 
 void Evernote::saveStore(QString data) {
-    QKeychain::WritePasswordJob writeJob(QString::fromStdString(config.storageKey));
-    writeJob.setAutoDelete(false);
-    writeJob.setKey(QString::fromStdString(config.passwordKey));
-    writeJob.setTextData(data);
-
-    QEventLoop loop;
-    QObject::connect( &writeJob, SIGNAL(finished(QKeychain::Job*)), &loop, SLOT(quit()) );
-    writeJob.start();
-    loop.exec();
-
-    if ( writeJob.error() ) {
-        qDebug() << "Storing store failed: "
-                  << qPrintable(writeJob.errorString());
-    }
-    qDebug() << "Store stored successfully";
+    KeychainStorePersist keychainPersist;
+    keychainPersist.saveStore(data, QString::fromStdString(config.storageKey), QString::fromStdString(config.passwordKey));
 }
 
 QString Evernote::loadStore() {
-    QKeychain::ReadPasswordJob readJob(QString::fromStdString(config.storageKey));
-    readJob.setAutoDelete( false );
-    readJob.setKey(QString::fromStdString(config.passwordKey));
-
-    QEventLoop loop;
-    QObject::connect( &readJob, SIGNAL(finished(QKeychain::Job*)), &loop, SLOT(quit()) );
-    readJob.start();
-    loop.exec();
-
-    const QString data = readJob.textData();
-    if ( readJob.error() ) {
-        qDebug() << "Restoring store failed: " << readJob.errorString();
-    }
-    qDebug() << "Restoring store successful;";
-
-    return data;
+    KeychainStorePersist keychainPersist;
+    return keychainPersist.loadStore(QString::fromStdString(config.storageKey), QString::fromStdString(config.passwordKey));
 }
 
 void Evernote::fetchUser() {
