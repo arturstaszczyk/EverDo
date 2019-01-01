@@ -7,3 +7,6 @@
 [submodule "evernote-thrift"]
 	path = evernote-thrift
 	url = https://github.com/evernote/evernote-thrift.git
+[submodule "qtkeychain"]
+	path = qtkeychain
+	url = https://github.com/frankosterfeld/qtkeychain.git

@@ -14,6 +14,11 @@ Middleware {
         console.log("MIDDLEWARE: " + type)
         if (type === ActionTypes.startApp) {
             mainWindow.visible = true;
+
+            var dataStr = evernote.loadStore();
+            var data = JSON.parse(dataStr)
+            Hydrate.rehydrate(store, data)
+
             return;
         }
         next(type, message);
@@ -24,6 +29,8 @@ Middleware {
         onClosing: {
             // You may inject a hook to forbid closing or save data if necessary
             console.log("closing");
+            var data = Hydrate.dehydrate(store)
+            evernote.saveStore(JSON.stringify(data));
         }
     }
 

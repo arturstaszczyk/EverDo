@@ -50,14 +50,5 @@ int main(int argc, char *argv[])
     QObject::connect(&evernote, &Evernote::tagsFetched, &projectsService, &ProjectsService::onTagsFetched);
     QObject::connect(&evernote, &Evernote::tagsFetched, &filtersService, &FiltersService::onTagsFetched);
 
-//    QObject* found = engine.rootObjects()[0]->property("mainStore").value<QObject*>();
-//    if(found) {
-//        qDebug() << found->property("authStore").value<QObject*>()->property("authenticated");
-//    } else {
-//        qDebug() << "fail";
-//    }
-
-    //evernote.fetchTags();
-
     return app.exec();
 }

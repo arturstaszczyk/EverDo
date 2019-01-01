@@ -16,6 +16,8 @@ struct Config {
     std::string endpoint;
     std::string consumerKey;
     std::string consumerSecret;
+    std::string storageKey;
+    std::string passwordKey;
 
     void loadConfig() {
         auto path = QCoreApplication::applicationDirPath().toStdString() + "/../Resources/config.yaml";
@@ -30,6 +32,8 @@ struct Config {
         this->endpoint = config["debugEndpoint"].as<std::string>();
         this->consumerKey = configPriv["consumerKey"].as<std::string>();
         this->consumerSecret = configPriv["consumerSecret"].as<std::string>();
+        this->storageKey = config["storageKey"].as<std::string>();
+        this->passwordKey = config["passwordKey"].as<std::string>();
     }
 
     std::string urlBase() const {

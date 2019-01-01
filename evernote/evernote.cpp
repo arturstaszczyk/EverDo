@@ -1,13 +1,17 @@
 #include "evernote.h"
 
 #include <QDebug>
+#include <QThread>
 
 #include "asyncfuture.h"
+#include "everdo/storeaccessor.h"
 
 #include "evernote-sdk/NoteStore.h"
 #include "thrift/protocol/TBinaryProtocol.h"
 #include "thrift/transport/THttpClient.h"
 #include "thrift/transport/TSSLSocket.h"
+
+#include "qtkeychain/keychain.h"
 
 
 using namespace apache::thrift::protocol;
@@ -33,6 +37,20 @@ Evernote::Evernote(QObject *parent)
     configureNoteStore();
     configureUserStore();
 }
+
+std::string Evernote::getAuthToken() {
+    auto authenticated = StoreAccessor::instance().getPropertyFromStore<bool>("authStore", "authenticated");
+    auto token = StoreAccessor::instance().getPropertyFromStore<QString>("authStore", "authToken");
+
+    if(authenticated && !token.isEmpty()) {
+        qDebug() << "Using REAL auth token";
+        return token.toStdString();
+    } else {
+        qDebug() << "Using DEV auth token";
+        return config.devToken;
+    }
+}
+
 
 void Evernote::configureUserStore() {
     // In order to establish SSL socket this hack was used
@@ -73,15 +91,53 @@ void Evernote::fetchToken(QString oauthVerifier) {
     auth->fetchToken(oauthVerifier);
 }
 
+void Evernote::saveStore(QString data) {
+    QKeychain::WritePasswordJob writeJob(QString::fromStdString(config.storageKey));
+    writeJob.setAutoDelete(false);
+    writeJob.setKey(QString::fromStdString(config.passwordKey));
+    writeJob.setTextData(data);
+
+    QEventLoop loop;
+    QObject::connect( &writeJob, SIGNAL(finished(QKeychain::Job*)), &loop, SLOT(quit()) );
+    writeJob.start();
+    loop.exec();
+
+    if ( writeJob.error() ) {
+        qDebug() << "Storing store failed: "
+                  << qPrintable(writeJob.errorString());
+    }
+    qDebug() << "Store stored successfully";
+}
+
+QString Evernote::loadStore() {
+    QKeychain::ReadPasswordJob readJob(QString::fromStdString(config.storageKey));
+    readJob.setAutoDelete( false );
+    readJob.setKey(QString::fromStdString(config.passwordKey));
+
+    QEventLoop loop;
+    QObject::connect( &readJob, SIGNAL(finished(QKeychain::Job*)), &loop, SLOT(quit()) );
+    readJob.start();
+    loop.exec();
+
+    const QString data = readJob.textData();
+    if ( readJob.error() ) {
+        qDebug() << "Restoring store failed: " << readJob.errorString();
+    }
+    qDebug() << "Restoring store successful;";
+
+    return data;
+}
+
 void Evernote::fetchUser() {
     auto userFuture = QtConcurrent::run(threadPool, [=]() {
-        userStoreClient->getUser(user, config.devToken);
+        qDebug() << "Fetching user on thread " << QThread::currentThreadId();
+        userStoreClient->getUser(user, getAuthToken());
         qDebug() << "Evernote fetched user: " << user.username.c_str();
         return user;
     });
 
     auto urlFuture = QtConcurrent::run(threadPool, [=]() {
-        userStoreClient->getUserUrls(userUrls, config.devToken);
+        userStoreClient->getUserUrls(userUrls, getAuthToken());
         qDebug() << "Evernote fetched urls: " << userUrls.noteStoreUrl.c_str();
         return userUrls;
     });
@@ -97,8 +153,9 @@ void Evernote::fetchUser() {
 
 void Evernote::fetchTags() {
     auto future = QtConcurrent::run(threadPool, [=]() {
+        qDebug() << "Fetching tags on thread " << QThread::currentThreadId();
         vector<evernote::edam::Tag> tags;
-        noteStoreClient->listTags(tags, config.devToken);
+        noteStoreClient->listTags(tags, getAuthToken());
         return tags;
     });
 

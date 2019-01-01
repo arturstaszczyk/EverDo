@@ -25,6 +25,9 @@ namespace EverDo {
         Q_INVOKABLE void authenticate();
         Q_INVOKABLE void fetchToken(QString oauthVerifier);
 
+        Q_INVOKABLE void saveStore(QString data);
+        Q_INVOKABLE QString loadStore();
+
     signals:
         void userFetched(evernote::edam::User);
         void urlsFetched(evernote::edam::UserUrls);
@@ -43,6 +46,7 @@ namespace EverDo {
     private:
         void configureUserStore();
         void configureNoteStore();
+        std::string getAuthToken();
 
     private:
         std::shared_ptr<apache::thrift::transport::TSSLSocketFactory> sslSocketFactory;

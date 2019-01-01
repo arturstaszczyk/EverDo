@@ -15,6 +15,7 @@ QML_IMPORT_PATH = $$PWD/qml
 include($$PWD/quickflux/quickflux.pri)
 include($$PWD/asyncfuture/asyncfuture.pri)
 include($$PWD/evernote-sdk/evernote-sdk.pri)
+include($$PWD/qtkeychain/qt5keychain.pri)
 
 APP_CONFIG_FILES.files += config.yaml
 APP_CONFIG_FILES.files += config-priv.yaml
