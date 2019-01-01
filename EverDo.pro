@@ -1,7 +1,8 @@
 TEMPLATE = app
 
 QT += qml quick concurrent network webengine
-CONFIG += c++11
+CONFIG += c++17
+CONFIG += sdk_no_version_check
 
 RESOURCES += qml.qrc
 

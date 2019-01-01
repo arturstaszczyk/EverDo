@@ -28,13 +28,12 @@ int main(int argc, char *argv[])
     QtWebEngine::initialize();
     QQmlApplicationEngine engine;
     EverDo::Evernote evernote;
+    StoreAccessor::instance(engine);
 
     engine.rootContext()->setContextProperty("evernote", &evernote);
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
     QFAppDispatcher* dispatcher = QFAppDispatcher::instance(&engine);
     dispatcher->dispatch("startApp");
-
-    StoreAccessor::instance(engine);
 
 
     EverDo::TemporaryTokenService temporaryTokenService(*dispatcher);
@@ -50,8 +49,8 @@ int main(int argc, char *argv[])
     QObject::connect(&evernote, &Evernote::tagsFetched, &projectsService, &ProjectsService::onTagsFetched);
     QObject::connect(&evernote, &Evernote::tagsFetched, &filtersService, &FiltersService::onTagsFetched);
 
-    evernote.fetchUser();
-    evernote.fetchTags();
+//    evernote.fetchUser();
+//    evernote.fetchTags();
 
     return app.exec();
 }

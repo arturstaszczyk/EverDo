@@ -1,10 +1,12 @@
 #include "storeaccessor.h"
 
+#include <mutex>
 #include <memory>
 #include <QDebug>
 
 using namespace EverDo;
 
+static std::mutex gAccessMutex;
 static std::unique_ptr<StoreAccessor> gInstance;
 
 StoreAccessor::StoreAccessor(QQmlApplicationEngine &engine, QObject *parent)
@@ -15,6 +17,8 @@ StoreAccessor::StoreAccessor(QQmlApplicationEngine &engine, QObject *parent)
 }
 
 StoreAccessor& StoreAccessor::instance() {
+    std::lock_guard<std::mutex> guard(gAccessMutex);
+
     if(!gInstance)
         throw std::runtime_error("StoreAccessor not initialized");
 
@@ -22,6 +26,7 @@ StoreAccessor& StoreAccessor::instance() {
 }
 
 StoreAccessor& StoreAccessor::instance(QQmlApplicationEngine& engine) {
+    std::lock_guard<std::mutex> guard(gAccessMutex);
     gInstance.reset(new StoreAccessor(engine));
     return *gInstance;
 }
