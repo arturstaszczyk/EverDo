@@ -1,7 +1,6 @@
-#include "evernoteauth.h"
-#include "../EverDo/storeaccessor.h"
-
+#include "evernoteoauthservice.h"
 #include <QtNetwork>
+#include <QQmlContext>
 
 static void setSslConfig(QNetworkRequest& request, QString url) {
     QSslConfiguration sslConfig = QSslConfiguration::defaultConfiguration();
@@ -12,14 +11,14 @@ static void setSslConfig(QNetworkRequest& request, QString url) {
 
 using namespace EverDo;
 
-EvernoteAuth::EvernoteAuth(const EverDo::Config& config,QObject *parent)
+ EvernoteOauthService::EvernoteOauthService(QQmlApplicationEngine &engine, const EverDo::Config& config, QObject *parent)
     : QObject(parent)
     , config(config)
 {
-
+    engine.rootContext()->setContextProperty("evernoteOauthService", this);
 }
 
-void EvernoteAuth::authenticate() {
+void EvernoteOauthService::authenticate() {
     auto credentialsUrlBase = config.urlBase() +
                 "/oauth?oauth_consumer_key=" + config.consumerKey +
                 "&oauth_signature=" + config.consumerSecret +
@@ -46,14 +45,13 @@ void EvernoteAuth::authenticate() {
     manager->get(request);
 }
 
-void EvernoteAuth::fetchToken(QString authVerifier) {
-    auto tempStoreToken = StoreAccessor::instance().getPropertyFromStore<QString>("authStore", "temporaryToken");
+void EvernoteOauthService::fetchToken(QString temporaryToken, QString authVerifier) {
     auto credentialsUrlBase = config.urlBase() +
                 "/oauth?oauth_consumer_key=" + config.consumerKey +
                 "&oauth_signature=" + config.consumerSecret +
                 "&oauth_signature_method=PLAINTEXT";
     auto permanentCredUrl = credentialsUrlBase +
-            "&oauth_token=" + tempStoreToken.toStdString() +
+            "&oauth_token=" + temporaryToken.toStdString() +
             "&oauth_verifier=" + authVerifier.toStdString();
 
     QNetworkAccessManager *manager = new QNetworkAccessManager();
@@ -69,7 +67,7 @@ void EvernoteAuth::fetchToken(QString authVerifier) {
         qDebug() << query.toString();
 
         auto token = query.queryItemValue("oauth_token");
-        emit tokenFetched(token);
+        emit oauthTokenFetched(token);
     });
 
     manager->get(request);

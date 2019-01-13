@@ -7,4 +7,6 @@ ActionCreator {
 
     signal updateFilters(var newFilters)
 
+    signal setFiltersDefinitions(var filters)
+
 }

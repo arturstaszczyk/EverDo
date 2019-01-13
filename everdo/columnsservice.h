@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QFAppDispatcher>
+#include <QQmlApplicationEngine>
 
 #include <evernote-sdk/Types_types.h>
 
@@ -12,18 +13,16 @@ class ColumnsService : public QObject
 {
     Q_OBJECT
 public:
-    explicit ColumnsService(QFAppDispatcher& appDispatcher, QObject *parent = nullptr);
+    explicit ColumnsService(QQmlApplicationEngine& engine, QObject *parent = nullptr);
 
 signals:
+    void setFetchedColumns(QVariantList columns);
 
 public slots:
     void onTagsFetched(const std::vector<evernote::edam::Tag>& tags);
 
 private:
     QVariantMap makeColumnObject(const evernote::edam::Tag& tag);
-
-private:
-    QFAppDispatcher& appDispatcher;
 };
 
 }

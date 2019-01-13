@@ -3,6 +3,7 @@ singleton ActionTypes 0.1 ActionTypes.qml
 singleton AuthActions 0.1 auth/AuthActions.qml
 singleton AuthActionTypes 0.1 auth/AuthActionTypes.qml
 singleton ColumnsActionTypes 0.1 columns/ColumnsActionTypes.qml
+singleton ColumnsActions 0.1 columns/ColumnsActions.qml
 singleton ProjectsPanelActionsTypes 0.1 panel/ProjectsPanelActionTypes.qml
 singleton ProjectsPanelActions 0.1 panel/ProjectsPanelActions.qml
 singleton FiltersActions 0.1 filters/FiltersActions.qml

@@ -1,14 +1,15 @@
 #include "filtersservice.h"
 
+#include <QQmlContext>
+
 using namespace std;
 using namespace evernote::edam;
 using namespace EverDo;
 
-FiltersService::FiltersService(QFAppDispatcher& appDispatcher, QObject *parent)
+FiltersService::FiltersService(QQmlApplicationEngine &engine, QObject *parent)
     : QObject(parent)
-    , appDispatcher(appDispatcher)
 {
-
+    engine.rootContext()->setContextProperty("filtersService", this);
 }
 
 void FiltersService::onTagsFetched(const std::vector<Tag>& tags) {
@@ -20,9 +21,7 @@ void FiltersService::onTagsFetched(const std::vector<Tag>& tags) {
         }
     }
 
-    appDispatcher.dispatch("setFiltersDefinitions", QVariantMap({
-                                                               make_pair("filters", filtersList)
-                                                           }));
+    emit setFetchedFilters(filtersList);
 }
 
 QVariantMap FiltersService::makeFilterObject(const evernote::edam::Tag& tag) {

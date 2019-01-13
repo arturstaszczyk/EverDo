@@ -12,7 +12,7 @@ Item {
     MiddlewareList {
         applyTarget: AppActions
 
-        SystemMiddleware {
+        AppMiddleware {
             mainWindow: mainWindow
         }
 

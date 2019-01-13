@@ -24,7 +24,7 @@ Store {
     ]
 
     Filter {
-        type: ColumnsActionTypes.setColumnsDefinition
+        type: ColumnsActionTypes.setColumnsDefinitions
         onDispatched: {
             console.log("Columns definitions", JSON.stringify(message))
             model = message.columns

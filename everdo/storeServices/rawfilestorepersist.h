@@ -1,16 +1,16 @@
-#ifndef KEYCHAINSTOREPERSIST_H
-#define KEYCHAINSTOREPERSIST_H
+#ifndef RAWFILESTOREPERSIST_H
+#define RAWFILESTOREPERSIST_H
 
 #include <QObject>
+
 #include "storepersist.h"
 
 namespace EverDo {
 
-class KeychainStorePersist : public QObject, public StorePersist
+class RawFileStorePersist : public StorePersist
 {
-    Q_OBJECT
 public:
-    explicit KeychainStorePersist(QObject *parent = nullptr);
+    RawFileStorePersist();
 
     virtual void saveStore(QString data, QString storage, QString key) const override;
     virtual QString loadStore(QString storage, QString key) const override;
@@ -19,4 +19,4 @@ public:
 
 }
 
-#endif // KEYCHAINSTOREPERSIST_H
+#endif // RAWFILESTOREPERSIST_H

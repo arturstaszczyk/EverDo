@@ -6,5 +6,9 @@ import "./"
 ActionCreator {
 
     signal debugAction()
+
+    signal fetchEvernoteTags()
+
+    signal fetchUser()
 }
 
