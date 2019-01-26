@@ -4,15 +4,16 @@
 #include <QObject>
 #include <QFuture>
 #include <QtConcurrent>
+#include <QQmlApplicationEngine>
 
 #include "evernote-sdk/Types_types.h"
 #include "evernote-sdk/UserStore.h"
 #include "evernote-sdk/NoteStore.h"
 
 #include "thrift/transport/TSSLSocket.h"
+#include "thrift/transport/THttpClient.h"
 
-#include "constants.h"
-#include "evernoteauth.h"
+#include "config.h"
 
 namespace EverDo {
 
@@ -22,26 +23,15 @@ namespace EverDo {
     public:
         explicit Evernote(QObject *parent = nullptr);
 
-        Q_INVOKABLE void authenticate();
-        Q_INVOKABLE void fetchToken(QString oauthVerifier);
+        const EverDo::Config& getConfig() { return config; }
 
-        Q_INVOKABLE void saveStore(QString data);
-        Q_INVOKABLE QString loadStore();
+        void fetchUser();
+        void fetchTags();
 
     signals:
         void userFetched(evernote::edam::User);
         void urlsFetched(evernote::edam::UserUrls);
         void tagsFetched(const std::vector<evernote::edam::Tag>&);
-
-        void temporaryTokenFetched(QString tempToken);
-        void tokenFetched(QString tempToken);
-
-    public slots:
-        void fetchUser();
-        void fetchTags();
-        void fetchFiltersList();
-        void fetchColumnsList();
-        void fetchNotesList();
 
     private:
         void configureUserStore();
@@ -51,13 +41,14 @@ namespace EverDo {
     private:
         std::shared_ptr<apache::thrift::transport::TSSLSocketFactory> sslSocketFactory;
         std::shared_ptr<evernote::edam::UserStoreClient> userStoreClient;
+        std::shared_ptr<apache::thrift::transport::THttpClient> userStoreHttpClient;
         std::shared_ptr<evernote::edam::NoteStoreClient> noteStoreClient;
+        std::shared_ptr<apache::thrift::transport::THttpClient> noteStoreHttpClient;
 
         evernote::edam::User user;
         evernote::edam::UserUrls userUrls;
 
         QThreadPool* threadPool;
-        EverDo::EvernoteAuth *auth;
         EverDo::Config config;
     };
 

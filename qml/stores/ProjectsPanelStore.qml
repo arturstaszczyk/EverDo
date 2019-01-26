@@ -69,10 +69,17 @@ Store {
     }
 
     Filter {
-        type: ProjectsPanelActionTypes.setProjectsDefinition
+        type: ProjectsPanelActionTypes.setCategoriesDefinitions
         onDispatched: {
-            console.log("Projects definition " + JSON.stringify(message.parents))
-            projectTypes = message.parents
+            console.log("Categories definition " + JSON.stringify(message.categories))
+            projectTypes = message.categories
+        }
+    }
+
+    Filter {
+        type: ProjectsPanelActionTypes.setProjectsDefinitions
+        onDispatched: {
+            console.log("Projects definition " + JSON.stringify(message.projects))
             projects = message.projects
         }
     }

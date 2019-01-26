@@ -9,4 +9,8 @@ ActionCreator {
 
     signal setAuthVerifier(string oauthVerifier)
 
+    signal setTemporaryToken(string temporaryToken)
+
+    signal setToken(string token)
+
 }

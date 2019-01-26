@@ -8,7 +8,9 @@ KeyTable {
 
     property string selectProject
 
-    property string setProjectsDefinition
+    property string setCategoriesDefinitions
+
+    property string setProjectsDefinitions
 
 }
 

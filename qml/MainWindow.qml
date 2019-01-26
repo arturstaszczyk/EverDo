@@ -22,10 +22,11 @@ Window {
         anchors.margins: Theme.basicElementSpacing
 
         visible: MainStore.authStore.authenticated
+
         onVisibleChanged: {
-            if(visible){
-                evernote.fetchUser()
-                evernote.fetchTags();
+            if(visible) {
+                AppActions.fetchUser()
+                AppActions.fetchEvernoteTags()
             }
         }
     }

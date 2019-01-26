@@ -7,8 +7,7 @@
 
 using namespace EverDo;
 
-KeychainStorePersist::KeychainStorePersist(QObject *parent)
-    : QObject(parent)
+KeychainStorePersist::KeychainStorePersist()
 {
 
 }

@@ -2,16 +2,16 @@
 
 #include <QCryptographicHash>
 #include <QDataStream>
+#include <QQmlContext>
 
 using namespace std;
 using namespace evernote::edam;
 using namespace EverDo;
 
-ProjectsService::ProjectsService(QFAppDispatcher& appDispatcher, QObject *parent)
+ProjectsService::ProjectsService(QQmlApplicationEngine& engine, QObject *parent)
     : QObject(parent)
-    , appDispatcher(appDispatcher)
 {
-
+    engine.rootContext()->setContextProperty("projectsService", this);
 }
 
 void ProjectsService::onTagsFetched(const std::vector<Tag>& tags) {
@@ -34,10 +34,9 @@ void ProjectsService::onTagsFetched(const std::vector<Tag>& tags) {
 
     const QList<QVariant>& parents = parentsMap.values();
     parentsList.append(parents);
-    appDispatcher.dispatch("setProjectsDefinition", QVariantMap({
-                                                               make_pair("projects", projectList),
-                                                               make_pair("parents", parentsList)
-                                                           }));
+
+    emit setFetchedCategories(parentsList);
+    emit setFetchedProjects(projectList);
 }
 
 QVariantMap ProjectsService::makeProjectObject(const Tag& tag) {

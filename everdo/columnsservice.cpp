@@ -1,13 +1,15 @@
 #include "columnsservice.h"
 
+#include <QQmlContext>
+
 using namespace std;
 using namespace evernote::edam;
 using namespace EverDo;
 
-ColumnsService::ColumnsService(QFAppDispatcher& appDispatcher, QObject *parent)
+ColumnsService::ColumnsService(QQmlApplicationEngine &engine, QObject *parent)
     : QObject(parent)
-    , appDispatcher(appDispatcher) {
-
+{
+    engine.rootContext()->setContextProperty("columnsService", this);
 }
 
 void ColumnsService::onTagsFetched(const std::vector<evernote::edam::Tag>& tags) {
@@ -19,9 +21,7 @@ void ColumnsService::onTagsFetched(const std::vector<evernote::edam::Tag>& tags)
         }
     }
 
-    appDispatcher.dispatch("setColumnsDefinition", QVariantMap({
-                                                               make_pair("columns", columnsList)
-                                                           }));
+    emit setFetchedColumns(columnsList);
 }
 
 QVariantMap ColumnsService::makeColumnObject(const Tag& tag) {

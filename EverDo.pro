@@ -31,23 +31,28 @@ DISTFILES += \
     build-evernote-thrift.sh \
 
 HEADERS += \
-    constants.h \
     evernote/evernote.h \
-    evernote/evernoteauth.h \
     everdo/projectsservice.h \
     everdo/columnsservice.h \
     everdo/filtersservice.h \
-    everdo/temporarytokenservice.h \
     everdo/storeaccessor.h \
-    everdo/storepersist.h \
-    everdo/keychainstorepersist.h
+    everdo/storeServices/storepersist.h \
+    everdo/storeServices/keychainstorepersist.h \
+    everdo/networkServices/evernoteoauthservice.h \
+    everdo/storeServices/rawfilestorepersist.h \
+    everdo/storeServices/storeservice.h \
+    everdo/networkServices/evernoteapiservice.h \
+    config.h
 
 SOURCES += main.cpp \
     evernote/evernote.cpp \
-    evernote/evernoteauth.cpp \
     everdo/projectsservice.cpp \
     everdo/columnsservice.cpp \
     everdo/filtersservice.cpp \
-    everdo/temporarytokenservice.cpp \
     everdo/storeaccessor.cpp \
-    everdo/keychainstorepersist.cpp
+    everdo/storeServices/keychainstorepersist.cpp \
+    everdo/networkServices/evernoteoauthservice.cpp \
+    everdo/storeServices/rawfilestorepersist.cpp \
+    everdo/storeServices/storepersist.cpp \
+    everdo/storeServices/storeservice.cpp \
+    everdo/networkServices/evernoteapiservice.cpp

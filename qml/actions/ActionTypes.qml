@@ -6,6 +6,10 @@ KeyTable {
 
     property string startApp
 
+    property string fetchEvernoteTags
+
+    property string fetchUser
+
     property string debugAction
 }
 
