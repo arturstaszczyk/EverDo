@@ -37,8 +37,8 @@ Middleware {
 
     function handleFetchEvernoteTags(type) {
         if(type === ActionTypes.fetchEvernoteTags) {
-            evernoteApi.fetchUser();
-            evernoteApi.fetchTags();
+            evernoteApiService.fetchUserMetadata();
+            evernoteApiService.fetchUserContent();
         }
     }
 

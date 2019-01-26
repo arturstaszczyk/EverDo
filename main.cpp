@@ -16,6 +16,7 @@
 #include "everdo/projectsservice.h"
 #include "everdo/storeaccessor.h"
 #include "everdo/storeServices/storeservice.h"
+#include "everdo/networkServices/evernoteapiservice.h"
 
 using namespace EverDo;
 
@@ -31,21 +32,24 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     StoreAccessor::instance(engine);
-    Evernote evernote(engine);
+    Evernote evernote;
+
     EvernoteOauthService oauthService(engine, evernote.getConfig());
+    EvernoteApiService evernoteApiService(engine, evernote);
     StoreService storeService(engine, evernote.getConfig(), StorePersist::StoreType::RawFileStore);
     ProjectsService projectsService(engine);
     ColumnsService columnsService(engine);
     FiltersService filtersService(engine);
+
+    QObject::connect(&evernote, &Evernote::tagsFetched, &columnsService, &ColumnsService::onTagsFetched);
+    QObject::connect(&evernote, &Evernote::tagsFetched, &projectsService, &ProjectsService::onTagsFetched);
+    QObject::connect(&evernote, &Evernote::tagsFetched, &filtersService, &FiltersService::onTagsFetched);
 
     engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
 
     QFAppDispatcher* dispatcher = QFAppDispatcher::instance(&engine);
     dispatcher->dispatch("startApp");
 
-    QObject::connect(&evernote, &Evernote::tagsFetched, &columnsService, &ColumnsService::onTagsFetched);
-    QObject::connect(&evernote, &Evernote::tagsFetched, &projectsService, &ProjectsService::onTagsFetched);
-    QObject::connect(&evernote, &Evernote::tagsFetched, &filtersService, &FiltersService::onTagsFetched);
 
     return app.exec();
 }

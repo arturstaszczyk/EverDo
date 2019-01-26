@@ -25,9 +25,6 @@ Store {
             authToken = message.token
             if(authToken) {
                 authenticated = true
-
-                AppActions.fetchUser();
-                AppActions.fetchEvernoteTags();
             }
         }
     }

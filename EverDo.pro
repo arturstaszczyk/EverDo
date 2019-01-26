@@ -40,9 +40,9 @@ HEADERS += \
     everdo/storeServices/storepersist.h \
     everdo/storeServices/keychainstorepersist.h \
     everdo/networkServices/evernoteoauthservice.h \
-    evernote/evernoteapi.h \
     everdo/storeServices/rawfilestorepersist.h \
-    everdo/storeServices/storeservice.h
+    everdo/storeServices/storeservice.h \
+    everdo/networkServices/evernoteapiservice.h
 
 SOURCES += main.cpp \
     evernote/evernote.cpp \
@@ -54,4 +54,5 @@ SOURCES += main.cpp \
     everdo/networkServices/evernoteoauthservice.cpp \
     everdo/storeServices/rawfilestorepersist.cpp \
     everdo/storeServices/storepersist.cpp \
-    everdo/storeServices/storeservice.cpp
+    everdo/storeServices/storeservice.cpp \
+    everdo/networkServices/evernoteapiservice.cpp

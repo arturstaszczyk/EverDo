@@ -22,6 +22,13 @@ Window {
         anchors.margins: Theme.basicElementSpacing
 
         visible: MainStore.authStore.authenticated
+
+        onVisibleChanged: {
+            if(visible) {
+                AppActions.fetchUser()
+                AppActions.fetchEvernoteTags()
+            }
+        }
     }
 
     LoginView {

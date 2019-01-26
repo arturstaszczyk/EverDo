@@ -18,7 +18,7 @@ using namespace evernote::edam;
 using namespace EverDo;
 using namespace std;
 
-Evernote::Evernote(QQmlApplicationEngine &engine, QObject *parent)
+Evernote::Evernote(QObject *parent)
     : QObject(parent)
     , sslSocketFactory(new TSSLSocketFactory())
     , userStoreClient(nullptr)
@@ -29,8 +29,6 @@ Evernote::Evernote(QQmlApplicationEngine &engine, QObject *parent)
     // all SSL calls within OpenSSL Library must be done from the same thread
     threadPool->setExpiryTimeout(-1);
     threadPool->setMaxThreadCount(1);
-
-    engine.rootContext()->setContextProperty("evernoteApi", this);
 
     config.loadConfig();
 

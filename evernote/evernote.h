@@ -14,21 +14,19 @@
 #include "thrift/transport/THttpClient.h"
 
 #include "constants.h"
-#include "evernoteapi.h"
 
 namespace EverDo {
 
-    class Evernote : public QObject, public EvernoteApi
+    class Evernote : public QObject
     {
         Q_OBJECT
-        Q_INTERFACES(EverDo::EvernoteApi)
     public:
-        explicit Evernote(QQmlApplicationEngine& engine, QObject *parent = nullptr);
+        explicit Evernote(QObject *parent = nullptr);
 
         const EverDo::Config& getConfig() { return config; }
 
-        Q_INVOKABLE void fetchUser() override;
-        Q_INVOKABLE void fetchTags() override;
+        void fetchUser();
+        void fetchTags();
 
     signals:
         void userFetched(evernote::edam::User);
