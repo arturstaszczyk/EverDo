@@ -56,7 +56,6 @@ Middleware {
     Connections {
         target: mainWindow
         onClosing: {
-            console.log("Closing the app");
             saveStore();
         }
     }

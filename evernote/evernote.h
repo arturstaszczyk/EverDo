@@ -13,7 +13,7 @@
 #include "thrift/transport/TSSLSocket.h"
 #include "thrift/transport/THttpClient.h"
 
-#include "constants.h"
+#include "config.h"
 
 namespace EverDo {
 

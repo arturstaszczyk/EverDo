@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QQmlApplicationEngine>
 
-#include "constants.h"
+#include "config.h"
 
 namespace EverDo {
 

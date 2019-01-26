@@ -3,7 +3,7 @@
 #include <QDebug>
 #include <QObject>
 #include <QtWebEngine>
-#include "constants.h"
+#include "config.h"
 
 #include <QuickFlux>
 #include <QFAppDispatcher>

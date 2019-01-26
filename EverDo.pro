@@ -31,7 +31,6 @@ DISTFILES += \
     build-evernote-thrift.sh \
 
 HEADERS += \
-    constants.h \
     evernote/evernote.h \
     everdo/projectsservice.h \
     everdo/columnsservice.h \
@@ -42,7 +41,8 @@ HEADERS += \
     everdo/networkServices/evernoteoauthservice.h \
     everdo/storeServices/rawfilestorepersist.h \
     everdo/storeServices/storeservice.h \
-    everdo/networkServices/evernoteapiservice.h
+    everdo/networkServices/evernoteapiservice.h \
+    config.h
 
 SOURCES += main.cpp \
     evernote/evernote.cpp \
