@@ -14,7 +14,6 @@
         <file>qml/actions/AppActions.qml</file>
         <file>qml/stores/ProjectsPanelStore.qml</file>
         <file>qml/views/panel/SliderDropDownHeader.qml</file>
-        <file>qml/views/panel/SliderDropDownDelegateModel.qml</file>
         <file>qml/actions/panel/ProjectsPanelActions.qml</file>
         <file>qml/actions/panel/ProjectsPanelActionTypes.qml</file>
         <file>qml/views/panel/SliderDropDownItem.qml</file>
@@ -46,5 +45,6 @@
         <file>qml/views/login/LoginWebView.qml</file>
         <file>qml/middlewares/AppMiddleware.qml</file>
         <file>qml/actions/columns/ColumnsActions.qml</file>
+        <file>qml/views/panel/SliderDropDownList.qml</file>
     </qresource>
 </RCC>

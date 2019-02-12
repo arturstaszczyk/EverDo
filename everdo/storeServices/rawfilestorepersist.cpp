@@ -21,6 +21,7 @@ void RawFileStorePersist::saveStore(QString data, QString storage, QString key) 
 
 QString RawFileStorePersist::loadStore(QString storage, QString key) const {
     QFile file(QDir::current().filePath(storage + key + ".tmp"));
+    qDebug() << "Reading from local file " << file.fileName();
     QString loadedStore = "";
 
     if(file.open(QFile::ReadOnly)) {

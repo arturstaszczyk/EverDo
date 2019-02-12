@@ -8,8 +8,7 @@ Item {
     id: panel
 
     property var projectTypes: MainStore.projectsPanelStore.projectTypes
-
-    property int selectedProjectTypeGuid: MainStore.projectsPanelStore.selectedProjectType
+    property var projects: MainStore.projectsPanelStore.projects
 
     SpaceCointainer {
         anchors.fill: parent
@@ -26,10 +25,13 @@ Item {
                 SliderDropDown {
                     headerGuid: modelData.guid
                     headerText: modelData.name
-                    headerHeight: 36
+
+                    content: projects.filter(function(project) {
+                        return project.type === modelData.guid
+                    })
 
                     width: parent.width
-                    selected: modelData.guid === selectedProjectTypeGuid
+                    headerHeight: 36
                 }
             }
         }
