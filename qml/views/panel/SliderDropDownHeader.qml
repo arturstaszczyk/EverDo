@@ -6,21 +6,21 @@ SpaceCointainer {
 
     property alias text: headerLabel.text
 
-    property bool selected
+    property bool highlighted
 
     noBorder: true
 
     Rectangle {
-        color: selected ? Theme.evernoteButtonHighlight : Theme.evernoteButton
+        color: highlighted ? Theme.evernoteButtonHighlight : Theme.evernoteButton
         border.width: 0
-        border.color: selected ? Theme.evernoteButton : Theme.evernoteButtonHighlight
+        border.color: highlighted ? Theme.evernoteButton : Theme.evernoteButtonHighlight
         anchors.fill: parent
 
         PrimaryText {
             id: headerLabel
             anchors.fill: parent
 
-            color: selected ? Theme.evernoteButton : Theme.evernoteButtonHighlight
+            color: highlighted ? Theme.evernoteButton : Theme.evernoteButtonHighlight
         }
     }
 }
